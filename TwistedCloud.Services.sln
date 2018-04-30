@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Kernel", "MicroServices\Shared.Kernel\Shared.Kernel.csproj", "{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommunityManagement", "CommunityManagement", "{00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Api", "MicroServices\TwistedCloud.CommunityManagement.Api\TwistedCloud.CommunityManagement.Api.csproj", "{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Core", "MicroServices\TwistedCloud.CommunityManagement.Core\TwistedCloud.CommunityManagement.Core.csproj", "{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Data", "MicroServices\TwistedCloud.CommunityManagement.Data\TwistedCloud.CommunityManagement.Data.csproj", "{6639B309-0FC1-458D-8921-CFE0C3A45677}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.IntegrationTests", "MicroServices\TwistedCloud.CommunityManagement.IntegrationTests\TwistedCloud.CommunityManagement.IntegrationTests.csproj", "{A0F984EB-DB69-44C9-858B-EF959986FCE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.DependencyRegistrar", "MicroServices\TwistedCloud.CommunityManagement.DependencyRegistrar\TwistedCloud.CommunityManagement.DependencyRegistrar.csproj", "{8FAC7510-C023-4F27-802A-CC138E13A48F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6639B309-0FC1-458D-8921-CFE0C3A45677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6639B309-0FC1-458D-8921-CFE0C3A45677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6639B309-0FC1-458D-8921-CFE0C3A45677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6639B309-0FC1-458D-8921-CFE0C3A45677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F984EB-DB69-44C9-858B-EF959986FCE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F984EB-DB69-44C9-858B-EF959986FCE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F984EB-DB69-44C9-858B-EF959986FCE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F984EB-DB69-44C9-858B-EF959986FCE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAC7510-C023-4F27-802A-CC138E13A48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAC7510-C023-4F27-802A-CC138E13A48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAC7510-C023-4F27-802A-CC138E13A48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAC7510-C023-4F27-802A-CC138E13A48F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{6639B309-0FC1-458D-8921-CFE0C3A45677} = {C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}
+		{A0F984EB-DB69-44C9-858B-EF959986FCE6} = {C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}
+		{C3DC3372-6BDF-49D0-9B88-D95850A1CF1A} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{8FAC7510-C023-4F27-802A-CC138E13A48F} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67EEEB34-48A8-4056-85EA-2A5190BCCF01}
+	EndGlobalSection
+EndGlobal
