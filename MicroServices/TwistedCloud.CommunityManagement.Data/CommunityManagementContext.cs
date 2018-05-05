@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using TwistedCloud.CommunityManagement.Core;
 using TwistedCloud.CommunityManagement.Core.Model;
+using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate;
 
 namespace TwistedCloud.CommunityManagement.Data
 {

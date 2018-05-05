@@ -1,7 +1,8 @@
 ﻿using TwistedCloud.CommunityManagement.Core.Enum;
 
 using TwistedCloud.CommunityManagement.Core.Model;
-using TwistedCloud.CommunityManagement.Core.Model.PersonType;
+using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate;
+using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
 
 namespace TwistedCloud.CommunityManagement.Data.Repository
 {

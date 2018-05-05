@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TwistedCloud.CommunityManagement.Core
+﻿namespace TwistedCloud.CommunityManagement.Core
 {
     public class ServiceConfigurationSettings
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using TwistedCloud.CommunityManagement.Core.Enum;
-using TwistedCloud.CommunityManagement.Core.Model.PersonType;
+using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
 
 namespace TwistedCloud.CommunityManagement.Data.Repository
 {
@@ -19,40 +19,10 @@ namespace TwistedCloud.CommunityManagement.Data.Repository
             var result = _context.GetAll();
             return result;
         }
-        public string AddNewAssistant(string lastName, string firstName, GenderTypes gender)
+        public string AddNewAssistant(Assistant assistant)
         {
-            if (string.IsNullOrWhiteSpace(lastName))
-            {
-                throw new ArgumentException("message", nameof(lastName));
-            }
-
-            if (string.IsNullOrWhiteSpace(firstName))
-            {
-                throw new ArgumentException("message", nameof(firstName));
-            }
-
-            if (!Enum.IsDefined(typeof(GenderTypes), gender))
-                throw new InvalidEnumArgumentException(nameof(gender), (int)gender, typeof(GenderTypes));
-
-
-            var assistant = new Assistant
-            {
-                LastName = lastName,
-                FirstName = firstName,
-                GenderType = gender,
-                
-                CreatedOnUtc = DateTime.UtcNow
-            };
-
             _context.Insert(assistant);
-
-      
             return assistant.Id;
-        }
-
-        public bool AddAssistantStartDate(Guid personId, DateTime startDate)
-        {
-            throw new System.NotImplementedException();
         }
 
         protected virtual void Dispose(bool disposing)

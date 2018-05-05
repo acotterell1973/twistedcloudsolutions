@@ -1,6 +1,6 @@
 ﻿using TwistedCloud.CommunityManagement.Core.Enum;
 
-namespace TwistedCloud.CommunityManagement.Core.Model
+namespace TwistedCloud.CommunityManagement.Core.Model.PersonAggregate
 {
     public sealed class AddressSecurity
 	{
