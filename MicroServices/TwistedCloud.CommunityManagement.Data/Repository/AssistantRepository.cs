@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using TwistedCloud.CommunityManagement.Core.Enum;
+using TwistedCloud.CommunityManagement.Core.Interfaces;
+using TwistedCloud.CommunityManagement.Core.Model;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
 
 namespace TwistedCloud.CommunityManagement.Data.Repository
 {
-    public class AssistantRepository : PeopleRepositoryBase<CommunityManagementContext<Assistant>>, IDisposable 
+    public class AssistantRepository : PeopleRepositoryBase<CommunityManagementContext<Assistant>>, IDisposable, IAssistantRepository
     {
         private readonly CommunityManagementContext<Assistant> _context;
         public AssistantRepository(CommunityManagementContext<Assistant> context) : base(context)
         {
             _context = context;
+        }
+
+        public Assistant GetAssistantById(string id)
+        {
+            var result = _context.GetById(id);
+            return result;
         }
 
         public IEnumerable<Assistant> GetAllAssistants()
@@ -22,7 +30,7 @@ namespace TwistedCloud.CommunityManagement.Data.Repository
         public string AddNewAssistant(Assistant assistant)
         {
             _context.Insert(assistant);
-            return assistant.Id;
+            return ((EntityBase) assistant).Id;
         }
 
         protected virtual void Dispose(bool disposing)

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Kernel", "MicroServi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommunityManagement", "CommunityManagement", "{00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Api", "MicroServices\TwistedCloud.CommunityManagement.Api\TwistedCloud.CommunityManagement.Api.csproj", "{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Core", "MicroServices\TwistedCloud.CommunityManagement.Core\TwistedCloud.CommunityManagement.Core.csproj", "{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Data", "MicroServices\TwistedCloud.CommunityManagement.Data\TwistedCloud.CommunityManagement.Data.csproj", "{6639B309-0FC1-458D-8921-CFE0C3A45677}"
@@ -21,6 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageSubscriber", "MicroServices\TwistedCloud.MessageSubscriber\MessageSubscriber.csproj", "{786B85F9-A239-4E99-AEC8-C955C0FCE32F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Microservice", "MicroServices\TwistedCloud.CommunityManagement.Microservice\TwistedCloud.CommunityManagement.Microservice.csproj", "{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Framework.DependencyInjection.Ninject", "MicroServices\Microsoft.Framework.DependencyInjection.Ninject\Microsoft.Framework.DependencyInjection.Ninject.csproj", "{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{813708E6-A266-4355-8572-FFD6D7D63B0D}"
+	ProjectSection(SolutionItems) = preProject
+		Notes.txt = Notes.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +38,6 @@ Global
 		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,17 +58,25 @@ Global
 		{786B85F9-A239-4E99-AEC8-C955C0FCE32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{786B85F9-A239-4E99-AEC8-C955C0FCE32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{786B85F9-A239-4E99-AEC8-C955C0FCE32F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F9315660-04D2-4B4C-AEC3-4C7E0E7C1497} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
 		{EA4472D6-0B0F-4C44-9FE6-1A5F7380B9B9} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
 		{6639B309-0FC1-458D-8921-CFE0C3A45677} = {C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}
 		{A0F984EB-DB69-44C9-858B-EF959986FCE6} = {C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}
 		{C3DC3372-6BDF-49D0-9B88-D95850A1CF1A} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
 		{8FAC7510-C023-4F27-802A-CC138E13A48F} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67EEEB34-48A8-4056-85EA-2A5190BCCF01}

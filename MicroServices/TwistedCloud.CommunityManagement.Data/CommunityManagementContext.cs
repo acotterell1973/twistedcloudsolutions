@@ -18,7 +18,6 @@ namespace TwistedCloud.CommunityManagement.Data
         public CommunityManagementContext(IMongoClient client, ServiceConfigurationSettings settings)
         {
             if (settings?.Profile.Database == null) throw new ArgumentException("message", ParamName);
-
             _database = client.GetDatabase(settings.Profile.Database);
             _collection = _database.GetCollection<TEntity>(typeof(TEntity).Name);
 
@@ -63,9 +62,11 @@ namespace TwistedCloud.CommunityManagement.Data
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public TEntity Insert(TEntity entity)
+        public  TEntity Insert(TEntity entity)
         {
-            _collection.InsertOneAsync(entity);
+            var result = _collection.InsertOneAsync(entity);
+            result.Wait();
+            
             return entity;
         }
         

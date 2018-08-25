@@ -18,7 +18,7 @@ namespace TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType
 
         public PhoneNumber PhoneNumber { get; set; }
 
-        public IEnumerable<Address> Address { get; set; }
+        public IEnumerable<Location> Address { get; set; }
 
         public static Assistant Create(string lastName, string firstName, GenderTypes gender)
         {
@@ -28,10 +28,9 @@ namespace TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType
          
             var assistant = new Assistant
             {
-                LastName = lastName,
-                FirstName = firstName,
+                Name = new Name {First = firstName, Last = lastName} ,
                 GenderType = gender,
-                Address = new List<Address>(),
+                Address = new List<Location>(),
                 EmailAddress = new List<EmailAddress>(),
                 CreatedOnUtc = DateTime.UtcNow,
                 UpdatedOnUtc = DateTime.UtcNow
@@ -39,7 +38,7 @@ namespace TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType
             return assistant;
         }
 
-        public Address GetAddress(AddressTypes addressType)
+        public Location GetAddress(AddressTypes addressType)
         {
             var address = Address.FirstOrDefault(addr => addr.AddressType.Equals(addressType));
             return address;
