@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using TwistedCloud.CommunityManagement.Core.Enum;
 using TwistedCloud.CommunityManagement.Core.Interfaces;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
-using TwistedCloud.CommunityManagement.Data.Repository;
 
 
 namespace TwistedCloud.CommunityManagement.Microservice.Controllers
@@ -18,7 +20,7 @@ namespace TwistedCloud.CommunityManagement.Microservice.Controllers
         {
             _assistantRepository = assistantRepository;
         }
-        // GET: api/<controller>
+
         [HttpGet]
         public IEnumerable<Assistant> Get()
         {
@@ -26,7 +28,7 @@ namespace TwistedCloud.CommunityManagement.Microservice.Controllers
             return assistant;
         }
 
-     
+
         [HttpGet("{id}")]
         [ProducesResponseType(404)]
         public async Task<Assistant> GetByIdAsync(string id)
@@ -35,18 +37,26 @@ namespace TwistedCloud.CommunityManagement.Microservice.Controllers
             return assistant;
         }
 
-      
+
         [HttpPost]
-        public void Post([FromBody]Assistant value)
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<Assistant>> CreateAsync([FromBody]Assistant assistant)
         {
+            string nameOfAction = nameof(GetByIdAsync);
+            Debug.Print("--> POST: " + JsonConvert.SerializeObject(assistant));
+
+            var newAssistant =  Assistant.Create(assistant.Name.First,assistant.Name.Last, assistant.GenderType);
+           
+            await _assistantRepository.AddNewAssistantAsync(newAssistant);
+            return CreatedAtAction(nameOfAction, new { id = newAssistant.Id }, newAssistant);
         }
 
-     
+
         [HttpPut("{id}")]
         public void Put(string id, [FromBody]Assistant value)
         {
             var assistant = _assistantRepository.GetAssistantById(id);
-            _assistantRepository.AddNewAssistant(assistant);
+            _assistantRepository.AddNewAssistantAsync(assistant);
         }
 
         [HttpDelete("{id}")]

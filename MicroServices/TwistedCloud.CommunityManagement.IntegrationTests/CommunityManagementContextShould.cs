@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using MongoDB.Bson.Serialization.Attributes;
 using Ninject;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate;
@@ -18,10 +19,10 @@ namespace TwistedCloud.CommunityManagement.IntegrationTests
         }
 
         [Fact]
-        public void AddNewAssistant()
+        public async Task AddNewAssistant()
         {
             var assistantRepository = _kernel.Get<AssistantRepository>();
-            var assistantId = assistantRepository.AddNewAssistant(new Assistant(){Name = new Name(){ Last = "Cotter", First = "Andrew"}});
+            var assistantId = await assistantRepository.AddNewAssistantAsync(new Assistant(){Name = new Name(){ Last = "Cotter", First = "Andrew"}});
             Assert.True(assistantId != string.Empty);
 
         }

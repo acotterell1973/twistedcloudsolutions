@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using TwistedCloud.CommunityManagement.Core.Enum;
+using System.Threading.Tasks;
 using TwistedCloud.CommunityManagement.Core.Interfaces;
-using TwistedCloud.CommunityManagement.Core.Model;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
 
 namespace TwistedCloud.CommunityManagement.Data.Repository
@@ -27,10 +25,10 @@ namespace TwistedCloud.CommunityManagement.Data.Repository
             var result = _context.GetAll();
             return result;
         }
-        public string AddNewAssistant(Assistant assistant)
+        public async Task<string> AddNewAssistantAsync(Assistant assistant)
         {
-            _context.Insert(assistant);
-            return ((EntityBase) assistant).Id;
+            await _context.Insert(assistant);
+            return assistant.Id;
         }
 
         protected virtual void Dispose(bool disposing)

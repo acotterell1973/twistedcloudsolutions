@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TwistedCloud.CommunityManagement.Core.Enum;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
@@ -9,7 +10,7 @@ namespace TwistedCloud.CommunityManagement.Core.Interfaces
     {
         Assistant GetAssistantById(string id);
         IEnumerable<Assistant> GetAllAssistants();
-        string AddNewAssistant(Assistant assistant);
+        Task<string> AddNewAssistantAsync(Assistant assistant);
         void Dispose();
         int AddAddressFor(string personId, Address address);
         bool AddEmailAddressFor(string personId, EmailTypes emailType, string emailAddress);

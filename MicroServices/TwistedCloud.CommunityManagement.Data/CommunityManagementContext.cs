@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TwistedCloud.CommunityManagement.Core;
-using TwistedCloud.CommunityManagement.Core.Model;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate;
 
 namespace TwistedCloud.CommunityManagement.Data
 {
-    public class CommunityManagementContext<TEntity>  where TEntity : Person
+    public class CommunityManagementContext<TEntity> where TEntity : Person
     {
         private const string ParamName = "Mongo Database ConnectionString is missing";
         private readonly IMongoDatabase _database;
@@ -17,7 +18,11 @@ namespace TwistedCloud.CommunityManagement.Data
 
         public CommunityManagementContext(IMongoClient client, ServiceConfigurationSettings settings)
         {
-            if (settings?.Profile.Database == null) throw new ArgumentException("message", ParamName);
+            if (settings?.Profile.Database == null)
+            {
+                throw new ArgumentException("message", ParamName);
+            }
+
             _database = client.GetDatabase(settings.Profile.Database);
             _collection = _database.GetCollection<TEntity>(typeof(TEntity).Name);
 
@@ -54,22 +59,19 @@ namespace TwistedCloud.CommunityManagement.Data
         /// <returns>Entity</returns>
         public TEntity GetById(string id)
         {
-            return _collection.Find(e => e.Id.Equals(id)).FirstOrDefault();
-
+            return _collection.Find(e => e.Id.Equals(id),null).ToListAsync<TEntity>().Result.FirstOrDefault();
         }
 
         /// <summary>
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public  TEntity Insert(TEntity entity)
+        public async Task<TEntity> Insert(TEntity entity)
         {
-            var result = _collection.InsertOneAsync(entity);
-            result.Wait();
-            
+            await _collection.InsertOneAsync(entity);
             return entity;
         }
-        
+
         public TEntity Save(TEntity entity)
         {
             _collection.ReplaceOneAsync(x => x.Id.Equals(entity.Id), entity, new UpdateOptions
@@ -83,10 +85,12 @@ namespace TwistedCloud.CommunityManagement.Data
         /// Insert entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        public void Insert(IEnumerable<TEntity> entities)
+        public async Task Insert(IEnumerable<TEntity> entities)
         {
             foreach (var entity in entities)
-                Insert(entity);
+            {
+                await Insert(entity);
+            }
         }
 
         /// <summary>
@@ -95,7 +99,7 @@ namespace TwistedCloud.CommunityManagement.Data
         /// <param name="entity">Entity</param>
         public TEntity Update(TEntity entity)
         {
-                 _collection.ReplaceOne(x => x.Id.Equals(entity.Id) , entity, new UpdateOptions() { IsUpsert = false });
+            _collection.ReplaceOne(x => x.Id.Equals(entity.Id), entity, new UpdateOptions() { IsUpsert = false });
             return entity;
 
         }
@@ -116,9 +120,9 @@ namespace TwistedCloud.CommunityManagement.Data
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public void Delete(TEntity entity)
+        public async Task Delete(TEntity entity)
         {
-              _collection.FindOneAndDeleteAsync(e => e.Id.Equals(entity.Id) );
+           await _collection.FindOneAndDeleteAsync(e => e.Id.Equals(entity.Id));
         }
 
         /// <summary>
@@ -129,13 +133,13 @@ namespace TwistedCloud.CommunityManagement.Data
         {
             foreach (var entity in entities)
             {
-                  _collection.FindOneAndDeleteAsync(e => e.Id.Equals(entity.Id) );
+                _collection.FindOneAndDeleteAsync(e => e.Id.Equals(entity.Id));
             }
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _collection.Find(new BsonDocument()).ToListAsync().Result;
+            return _collection.Find(new BsonDocument()).ToListAsync<TEntity>().Result;
         }
         #endregion
 

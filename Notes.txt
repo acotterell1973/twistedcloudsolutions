@@ -1,2 +1,5 @@
 https://dotnetcoretutorials.com/2017/03/30/third-party-dependency-injection-asp-net-core/
 https://stackoverflow.com/questions/31695194/translating-ninject-to-asp-net-mvc-6-di
+
+MongoDb async
+https://stackoverflow.com/questions/30988107/async-await-usage-for-mongodb-repository
