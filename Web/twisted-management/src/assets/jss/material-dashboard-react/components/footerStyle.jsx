@@ -2,7 +2,7 @@ import {
   defaultFont,
   container,
   primaryColor
-} from "../../../../assets/jss/material-dashboard-react";
+} from "assets/jss/material-dashboard-react";
 
 const footerStyle = {
   block: {

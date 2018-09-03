@@ -9,7 +9,7 @@ import {
   successColor,
   warningColor,
   dangerColor
-} from "../../../../assets/jss/material-dashboard-react";
+} from "assets/jss/material-dashboard-react";
 
 const sidebarStyle = theme => ({
   drawerPaper: {

@@ -10,10 +10,10 @@ import Hidden from "@material-ui/core/Hidden";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
 // core components
-import HeaderLinks from "../Header/HeaderLinks";
-import Button from "../../components/CustomButtons/Button";
+import HeaderLinks from "components/Header/HeaderLinks";
+import Button from "components/CustomButtons/Button";
 
-import headerStyle from "../../assets/jss/material-dashboard-react/components/headerStyle";
+import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle";
 
 function Header({ ...props }) {
   function makeBrand() {
