@@ -1,11 +1,11 @@
 /*!
 
  =========================================================
- * Material Dashboard React - v1.4.1 based on Material Dashboard - v1.2.0
+ * Material Dashboard PRO React - v1.3.0 based on Material Dashboard PRO - v1.2.1
  =========================================================
 
- * Product Page: http://www.creative-tim.com/product/material-dashboard-react
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+ * Product Page: https://www.creative-tim.com/product/material-dashboard-react
+ * Copyright 2018 Creative Tim (https://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
 
  =========================================================
@@ -20,8 +20,24 @@
 
 const drawerWidth = 260;
 
+const drawerMiniWidth = 80;
+
 const transition = {
   transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)"
+};
+
+const containerFluid = {
+  paddingRight: "15px",
+  paddingLeft: "15px",
+  marginRight: "auto",
+  marginLeft: "auto",
+  "&:before,&:after": {
+    display: "table",
+    content: '" "'
+  },
+  "&:after": {
+    clear: "both"
+  }
 };
 
 const container = {
@@ -58,7 +74,7 @@ const card = {
   width: "100%",
   margin: "25px 0",
   boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
-  borderRadius: "3px",
+  borderRadius: "6px",
   color: "rgba(0, 0, 0, 0.87)",
   background: "#fff"
 };
@@ -102,6 +118,28 @@ const roseBoxShadow = {
     "0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4)"
 };
 
+// old card headers
+const orangeCardHeader = {
+  background: "linear-gradient(60deg, #ffa726, #fb8c00)",
+  ...warningBoxShadow
+};
+const greenCardHeader = {
+  background: "linear-gradient(60deg, #66bb6a, #43a047)",
+  ...successBoxShadow
+};
+const redCardHeader = {
+  background: "linear-gradient(60deg, #ef5350, #e53935)",
+  ...dangerBoxShadow
+};
+const blueCardHeader = {
+  background: "linear-gradient(60deg, #26c6da, #00acc1)",
+  ...infoBoxShadow
+};
+const purpleCardHeader = {
+  background: "linear-gradient(60deg, #ab47bc, #8e24aa)",
+  ...primaryBoxShadow
+};
+// new card headers
 const warningCardHeader = {
   background: "linear-gradient(60deg, #ffa726, #fb8c00)",
   ...warningBoxShadow
@@ -150,6 +188,33 @@ const defaultBoxShadow = {
   transition: "all 150ms ease 0s"
 };
 
+const tooltip = {
+  padding: "10px 15px",
+  minWidth: "130px",
+  color: "#FFFFFF",
+  lineHeight: "1.7em",
+  background: "rgba(85,85,85,0.9)",
+  border: "none",
+  borderRadius: "3px",
+  opacity: "1!important",
+  boxShadow:
+    "0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2)",
+  maxWidth: "200px",
+  textAlign: "center",
+  fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
+  fontSize: "12px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  textShadow: "none",
+  textTransform: "none",
+  letterSpacing: "normal",
+  wordBreak: "normal",
+  wordSpacing: "normal",
+  wordWrap: "normal",
+  whiteSpace: "normal",
+  lineBreak: "auto"
+};
+
 const title = {
   color: "#3C4858",
   textDecoration: "none",
@@ -160,6 +225,7 @@ const title = {
   fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
   "& small": {
     color: "#777",
+    fontSize: "65%",
     fontWeight: "400",
     lineHeight: "1"
   }
@@ -191,8 +257,10 @@ const cardLink = {
 export {
   //variables
   drawerWidth,
+  drawerMiniWidth,
   transition,
   container,
+  containerFluid,
   boxShadow,
   card,
   defaultFont,
@@ -209,15 +277,23 @@ export {
   warningBoxShadow,
   dangerBoxShadow,
   roseBoxShadow,
+  // old card header colors
+  orangeCardHeader,
+  greenCardHeader,
+  redCardHeader,
+  blueCardHeader,
+  purpleCardHeader,
+  roseCardHeader,
+  // new card header colors
   warningCardHeader,
   successCardHeader,
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
-  roseCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,
+  tooltip,
   title,
   cardTitle,
   cardSubtitle,

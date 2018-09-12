@@ -54,12 +54,12 @@ class App extends React.Component {
     }
     componentDidMount() {
         if (navigator.platform.indexOf("Win") > -1) {
-             ps = new PerfectScrollbar(this.refs.mainPanel, {
-               suppressScrollX: true,
-               suppressScrollY: false
-             });
+            ps = new PerfectScrollbar(this.refs.mainPanel, {
+                suppressScrollX: true,
+                suppressScrollY: false
+            });
             document.body.style.overflow = "hidden";
-          }
+        }
         window.addEventListener("resize", this.resizeFunction);
     }
     componentDidUpdate(e) {
@@ -73,25 +73,25 @@ class App extends React.Component {
     componentWillUnmount() {
         if (navigator.platform.indexOf("Win") > -1) {
             ps.destroy();
-          }
+        }
         window.removeEventListener("resize", this.resizeFunction);
     }
     render() {
         const { classes, ...rest } = this.props;
         const mainPanel =
-        classes.mainPanel +
-        " " +
-        cx({
-          [classes.mainPanelSidebarMini]: this.state.miniActive,
-          [classes.mainPanelWithPerfectScrollbar]:
-            navigator.platform.indexOf("Win") > -1
-        });
+            classes.mainPanel +
+            " " +
+            cx({
+                [classes.mainPanelSidebarMini]: this.state.miniActive,
+                [classes.mainPanelWithPerfectScrollbar]:
+                    navigator.platform.indexOf("Win") > -1
+            });
         return (
             <div className={classes.wrapper}>
                 <Sidebar
                     routes={dashboardRoutes}
                     logoText={"Twisted Cloud"}
-logo ={logo}
+                    logo={logo}
                     image={image}
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.mobileOpen}
