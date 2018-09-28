@@ -53,6 +53,12 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
+        const script = document.createElement("script");
+        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD3W3rqhz-vSPRxlgPLbCTzmoCatvDX02o&libraries=places";
+        script.async = true;
+    
+        document.body.appendChild(script);
+    
         if (navigator.platform.indexOf("Win") > -1) {
             ps = new PerfectScrollbar(this.refs.mainPanel, {
                 suppressScrollX: true,
@@ -87,6 +93,7 @@ class App extends React.Component {
                     navigator.platform.indexOf("Win") > -1
             });
         return (
+   
             <div className={classes.wrapper}>
                 <Sidebar
                     routes={dashboardRoutes}

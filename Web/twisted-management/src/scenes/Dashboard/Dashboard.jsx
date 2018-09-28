@@ -12,7 +12,13 @@ class Dashboard extends React.Component {
   handleChange = (event, value) => {
     this.setState({ value });
   };
+  componentDidMount() {
 
+  }
+  
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
   handleChangeIndex = index => {
     this.setState({ value: index });
   };

@@ -10,8 +10,8 @@ const customSelectStyle = {
     fontWeight: "400",
     lineHeight: "1.42857",
     textDecoration: "none",
-    textTransform: "uppercase",
-    color: "#3C4858",
+   
+    color: "#AAAAAA",
     letterSpacing: "0",
     "&:focus": {
       backgroundColor: "transparent"
@@ -24,7 +24,7 @@ const customSelectStyle = {
     }
   },
   selectFormControl: {
-    margin: "10px 1px 10px 0px !important",
+    margin: "23px 1px 10px 0px !important",
     "& > div": {
       "&:before": {
         borderBottomWidth: "1px !important",
@@ -36,9 +36,9 @@ const customSelectStyle = {
     }
   },
   selectLabel: {
-    fontSize: "12px",
-    textTransform: "uppercase",
-    color: "#3C4858 !important",
+    fontSize: "14px",
+   
+    color: "#AAAAAA !important",
     top: "8px"
   },
   selectMenu: {
@@ -105,7 +105,7 @@ const customSelectStyle = {
       borderLeft: "2px solid currentColor",
       transform: "rotate(-45deg)",
       opacity: "1",
-      color: "#3c4858",
+      color: "#AAAAAA",
       position: "absolute",
       content: "''",
       borderBottom: "2px solid currentColor",
