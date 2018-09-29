@@ -1,4 +1,3 @@
-//AIzaSyCk6oomD0MXkvfrSZuJ9x4JO4aveAug22c
 import React, { Component, PropTypes } from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
