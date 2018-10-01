@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import { PropTypes } from "prop-types";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -9,19 +10,18 @@ import FormControl from "@material-ui/core/FormControl";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-import Clearfix from "components/Clearfix/Clearfix.jsx";
 
 import extendedFormsStyle from "assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx";
+
+import { States } from "staticdata/listOfStates";
 
 class AddressForm extends Component {
   constructor(props) {
     super(props);
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.streetname = null;
+
   }
   componentDidMount() {
     const google = window.google;
@@ -38,6 +38,7 @@ class AddressForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+ 
   handleSubmit(event) {
     event.preventDefault();
     // this.props.dispatch(addParlor(this.state));
@@ -61,7 +62,9 @@ class AddressForm extends Component {
     });
   }
   render() {
-    const { classes } = this.props;
+    const { classes, addressOwnerId,addressInfo } = this.props;
+    const { store } = this.context;
+
     return (
       <div>
         <form>
@@ -73,6 +76,11 @@ class AddressForm extends Component {
                   id="street-number"
                   formControlProps={{
                     fullWidth: true
+                  }}
+                  inputProps={{
+                    value:addressInfo.streetNumber,
+                    onChange: event => this.change(event, "firstname", "length", 3),
+                    
                   }}
                 />
               </GridItem>
@@ -110,10 +118,7 @@ class AddressForm extends Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <FormControl fullWidth className={classes.selectFormControl}>
-                  <InputLabel
-                    htmlFor="state-select"
-                    className={classes.selectLabel}
-                  >
+                  <InputLabel htmlFor="state-select" className={classes.selectLabel} >
                     State
                   </InputLabel>
                   <Select
@@ -123,6 +128,7 @@ class AddressForm extends Component {
                     classes={{
                       select: classes.select
                     }}
+                    value={addressInfo.state}
                     inputProps={{
                       id: "state-select"
                     }}
@@ -133,18 +139,17 @@ class AddressForm extends Component {
                         root: classes.selectMenuItem
                       }}
                     >
-                      Choose City
+                      Choose State
                     </MenuItem>
-                    <MenuItem
-                      classes={{
-                        root: classes.selectMenuItem,
-                        selected: classes.selectMenuItemSelected
-                      }}
-                      value="2"
-                    >
-                      {" "}
-                      Paris
-                    </MenuItem>
+                    {
+                      States.map((state, idx) =>
+                        <MenuItem key={idx} classes={{
+                          root: classes.selectMenuItem,
+                          selected: classes.selectMenuItemSelected
+                        }} value={state.abbreviation} >{state.name}</MenuItem>
+                      )
+                    }
+
                   </Select>
                 </FormControl>
               </GridItem>
@@ -164,5 +169,7 @@ class AddressForm extends Component {
     );
   }
 }
-
+AddressForm.contextTypes = {
+  store: PropTypes.object
+}
 export default withStyles(extendedFormsStyle)(AddressForm);

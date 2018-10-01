@@ -29,6 +29,8 @@ import AddressForm from "components/Address/Address.jsx";
 import userProfileStyles from "assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx";
 import avatar from "assets/img/generic-person.png";
 
+
+
 class UserProfile extends Component {
   constructor(props) {
     super(props);
@@ -105,7 +107,7 @@ class UserProfile extends Component {
                 </GridContainer>
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={12}>
-                    <AddressForm />
+                    <AddressForm addressOwnerId={"5b81ae5c3cca1e650447cb14"} addressInfo={{streetNumber:"2345", state:"FL"}} />
                   </GridItem>
                 </GridContainer>
                 <GridContainer>

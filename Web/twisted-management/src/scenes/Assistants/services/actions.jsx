@@ -20,3 +20,14 @@ export const editAssistantName = (id, first, last, title) => ({
     last,
     title
 })
+
+export const getAddress = (id, getState) =>({
+    type: C.EDIT_ASSISTANT_ADDRESS,
+    id
+})
+
+export const editAddress = (id,field, value) =>({
+    type: C.EDIT_ASSISTANT_ADDRESS,
+    id,
+    [field]: value
+})
