@@ -31,7 +31,7 @@ import avatar from "assets/img/generic-person.png";
 
 
 
-class UserProfile extends Component {
+class AssistantUserProfile extends Component {
   constructor(props) {
     super(props);
   
@@ -185,4 +185,4 @@ class UserProfile extends Component {
 }
 
 
-export default withStyles(userProfileStyles)(UserProfile);
+export default withStyles(userProfileStyles)(AssistantUserProfile);

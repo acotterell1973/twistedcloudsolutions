@@ -78,56 +78,37 @@ class Assistants extends React.Component {
                 <CardBody>
               <Table
                 tableHead={[
-                  "#",
                   "Name",
-                  "Job Position",
-                  "Since",
-                  "Salary",
+                  "Start Date",
+                  "# Clients",
+                  "Total Earnings",
                   "Actions"
                 ]}
                 tableData={[
                   [
-                    "1",
                     "Andrew Mike",
-                    "Develop",
-                    "2013",
-                    "€ 99,225",
-                    fillButtons
-                  ],
-                  ["2", "John Doe", "Design", "2012", "€ 89,241", fillButtons],
-                  [
+                    "2018-10-12",
                     "3",
-                    "Alex Mike",
-                    "Design",
-                    "2010",
-                    "€ 92,144",
+                    "$1200",
                     fillButtons
                   ],
                   [
-                    "4",
-                    "Mike Monday",
-                    "Marketing",
-                    "2013",
-                    "€ 49,990",
-                    fillButtons
-                  ],
-                  [
-                    "5",
-                    "Paul Dickens",
-                    "Communication",
-                    "2015",
-                    "€ 69,201",
+                    "Andrew Mike",
+                    "2018-10-12",
+                    "3",
+                    "$1200",
                     fillButtons
                   ]
+                  
                 ]}
                 customCellClasses={[
-                  classes.center,
+                  classes.left,
                   classes.right,
                   classes.right
                 ]}
                 customClassesForCells={[0, 4, 5]}
                 customHeadCellClasses={[
-                  classes.center,
+                  classes.left,
                   classes.right,
                   classes.right
                 ]}
