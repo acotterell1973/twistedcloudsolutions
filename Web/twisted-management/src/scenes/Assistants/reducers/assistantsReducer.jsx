@@ -1,81 +1,5 @@
 import C from "../services/constants";
-
-const assistantDetail = (state = {}, action) => {
-  switch (action.type) {
-    case C.ADD_ASSISTANT:
-      return {
-        startWorkDate: null,
-        endWorkDate: null,
-        emailAddress: [
-          {
-            email: null,
-            emailType: null
-          }
-        ],
-        phoneNumber: [
-          {
-            number: null,
-            phoneType: null
-          }
-        ],
-        address: [
-          {
-            streetNumber: null,
-            streetName: null,
-            unitName: null,
-            city: null,
-            state: null,
-            postCode: null
-          }
-        ],
-        name: {
-          title: null,
-          first: null,
-          last: null
-        },
-        dob: null,
-        nationality: null,
-        genderType: 0,
-        id: action.id
-      };
-
-    case C.EDIT_ASSISTANT_NAME:
-      return {
-        ...state,
-        title: action.title,
-        first: action.first,
-        last: action.last
-      };
-
-    case C.EDIT_ASSISTANT_ADDRESS:
-      return {
-        ...state,
-        streetNumber: action.streetNumber,
-        streetName: action.streetName,
-        unitName: action.unitName,
-        city: action.city,
-        state: action.state,
-        postCode: action.postCode
-      };
-
-    case C.EDIT_ASSISTANT_PHONE:
-      return {
-        ...state,
-        number: action.number,
-        phoneType: action.phoneType
-      };
-
-    case C.EDIT_ASSISTANT_EMAIL:
-      return {
-        ...state,
-        email: action.email,
-        emailType: action.emailType
-      };
-
-    default:
-      return state;
-  }
-};
+import assistantDetail from "./assistantDetailReducer";
 
 export const assistant = (state = {}, action) => {
   let assistant = {
@@ -84,7 +8,11 @@ export const assistant = (state = {}, action) => {
 
   switch (action.type) {
     case C.ADD_ASSISTANT:
+    case C.ADD_ASSISTANT_ADDRESS:
+    case C.ADD_ASSISTANT_PHONE:
+    case C.ADD_ASSISTANT_EMAIL:
       return assistantDetail(state, action);
+      break;
 
     case C.EDIT_ASSISTANT_NAME:
       let { name } = assistant;
@@ -108,8 +36,11 @@ export const assistant = (state = {}, action) => {
     case C.EDIT_ASSISTANT_EMAIL:
       if (state.id !== action.id) return state;
       let { emailAddress } = assistant;
-      let emailAddressrEntry = assistantDetail(emailAddress.first || {},action);
-      assistant.emailAddress = [{ ...emailAddressEntry }];
+////      let emailAddressrEntry = assistantDetail(
+ //       emailAddress.first || {},
+ //       action
+//);
+  //    assistant.emailAddress = [{ ...emailAddressEntry }];
       return assistant;
 
     case C.EDIT_ASSISTANT:
@@ -121,7 +52,7 @@ export const assistant = (state = {}, action) => {
             endWorkDate: action.endWorkDate,
             dob: action.dob,
             nationality: action.nationality,
-            genderType: action.genderType,
+            genderType: action.genderType
           };
 
     default:
@@ -130,10 +61,14 @@ export const assistant = (state = {}, action) => {
 };
 
 export const assistants = (state = [], action) => {
-//  console.log("INCOMMING STATE =>" + JSON.stringify(state));
   switch (action.type) {
     case C.ADD_ASSISTANT:
       return [...state, assistant({}, action)];
+
+    case C.ADD_ASSISTANT_ADDRESS:
+    case C.ADD_ASSISTANT_PHONE:
+    case C.ADD_ASSISTANT_EMAIL:
+      return state.map(entity => assistant(entity, action));
 
     case C.EDIT_ASSISTANT_NAME:
     case C.EDIT_ASSISTANT_ADDRESS:
@@ -142,8 +77,8 @@ export const assistants = (state = [], action) => {
       return state.map(entity => assistant(entity, action));
 
     //case C.REMOVE_ASSISTANT:
-      //state.filter(assistant => assistant.Id != action.Id);
-      //break;
+    //state.filter(assistant => assistant.Id != action.Id);
+    //break;
     default:
       return state;
   }

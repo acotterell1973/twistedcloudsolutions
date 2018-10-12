@@ -1,8 +1,16 @@
 import C from "../services/constants";
-import { assistants, assistant } from "./assistantsReducer";
-import { storeFactory, intialState } from "../../../storeFactory";
+import {
+  assistants,
+  assistant
+} from "./assistantsReducer";
+import {
+  storeFactory,
+  intialState
+} from "../../../storeFactory";
 import deepFreeze from "deep-freeze";
-import { v4 } from 'uuid';
+import {
+  v4
+} from 'uuid';
 
 describe("assistant reducer", () => {
   let store;
@@ -28,25 +36,10 @@ describe("assistant reducer", () => {
       startWorkDate: null,
       endWorkDate: null,
       emailAddress: [
-        {
-          email: null,
-          emailType: null
-        }
+
       ],
-      phoneNumber: [{
-        number: null,
-        phoneType: null
-      }],
-      address: [
-        {
-          streetNumber: null,
-          streetName: null,
-          unitName: null,
-          city: null,
-          state: null,
-          postCode: null
-        }
-      ],
+      phoneNumber: [],
+      address: [],
       name: {
         title: null,
         first: null,
@@ -101,15 +94,13 @@ describe("assistant reducer", () => {
 
     const results = assistant(state, action);
 
-    expect(results.address).toEqual([
-      {
-        streetNumber: "2188",
-        streetName: "Telogio Ct",
-        unitName: null,
-        city: "West Palm Beach",
-        state: "FL",
-        postCode: "33411"
-      }
-    ]);
+    expect(results.address).toEqual([{
+      streetNumber: "2188",
+      streetName: "Telogio Ct",
+      unitName: null,
+      city: "West Palm Beach",
+      state: "FL",
+      postCode: "33411"
+    }]);
   });
 });

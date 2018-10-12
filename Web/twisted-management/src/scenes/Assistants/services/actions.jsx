@@ -2,10 +2,29 @@ import C from "./constants";
 import fetchThenDispatch from "./fetchData";
 import { v4 } from "uuid";
 
-export const addAssistant = id => ({
+export const initializeAssistant = id => ({
   type: C.ADD_ASSISTANT,
   id
 });
+
+export const initializeEmail = (id, emailId) => ({
+  type: C.ADD_ASSISTANT_EMAIL,
+  id,
+  emailId
+});
+
+export const initializePhone = (id, phoneId) => ({
+  type: C.ADD_ASSISTANT_PHONE,
+  id,
+  phoneId
+});
+
+export const initializeAddress = (id, addressId) => ({
+  type: C.ADD_ASSISTANT_ADDRESS,
+  id,
+  addressId
+});
+
 
 export const addAssistantName = (id, first, last, title) => (
   dispatch,
@@ -37,13 +56,37 @@ export const getAddress = (id, getState) => ({
   id
 });
 
-export const editAddress = (id, streetNumber, streetName, unitName, city, state, postCode) => ({
-  type: C.EDIT_ASSISTANT_ADDRESS,
+export const editAddress = (
   id,
+  addressId,
   streetNumber,
   streetName,
   unitName,
   city,
   state,
   postCode
+) => ({
+  type: C.EDIT_ASSISTANT_ADDRESS,
+  id,
+  addressId,
+  streetNumber,
+  streetName,
+  unitName,
+  city,
+  state,
+  postCode
+});
+
+export const editAssistantPhone = (id, number, phoneType) => ({
+  type: C.EDIT_ASSISTANT_PHONE,
+  id,
+  number,
+  phoneType,
+});
+
+export const editAssistantEmail = (id, email, emailType) => ({
+  type: C.EDIT_ASSISTANT_EMAIL,
+  id,
+  email,
+  emailType,
 });

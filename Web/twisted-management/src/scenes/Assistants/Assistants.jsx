@@ -1,4 +1,7 @@
 import React from "react";
+// react component for creating dynamic tables
+import ReactTable from "react-table";
+
 import { withStyles } from "@material-ui/core";
 import { cardTitle } from "assets/jss/material-dashboard-react";
 
