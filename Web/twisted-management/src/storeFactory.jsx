@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { assistants } from "./scenes/Assistants/reducers/assistantsReducer";
+import { navigationDetail } from "./navigationDetailReducer";
 import { appConstants } from "./appConstants";
 
 const logger = store => next => action => {
@@ -22,45 +23,8 @@ const saver = store => next => action => {
 };
 export const storeFactory = intialState =>
   applyMiddleware(logger, saver)(createStore)(
-    combineReducers({ assistants }),
+    combineReducers({ navigationDetail, assistants }),
     localStorage[appConstants.LOCAL_STORE_NAME]
-      ? JSON.parse(localStorage[appConstants.LOCAL_STORE_NAME])
+      ? intialState
       : intialState
   );
-
-export const intialState = {
-  assistants: [
-    {
-      startWorkDate: null,
-      endWorkDate: null,
-      emailAddress: null,
-      phoneNumber: null,
-      address: null,
-      name: {
-        title: null,
-        first: "Andrew",
-        last: "Cotter"
-      },
-      dob: null,
-      nationality: null,
-      genderType: 0,
-      id: "5b81ae5c3cca1e650447cb14"
-    },
-    {
-      startWorkDate: null,
-      endWorkDate: null,
-      emailAddress: null,
-      phoneNumber: null,
-      address: [],
-      name: {
-        title: null,
-        first: null,
-        last: null
-      },
-      dob: null,
-      nationality: null,
-      genderType: 0,
-      id: "5b81d065d544815cb887c63a"
-    }
-  ]
-};
