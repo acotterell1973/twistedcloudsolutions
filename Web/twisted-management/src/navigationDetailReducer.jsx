@@ -7,6 +7,7 @@ export const navigationDetail = (state = {}, action) => {
                 ...state,
                 canNavigate: action.canNavigate,
                 pathname: action.pathname,
+                search: null,
                 referrer: action.referrer
             }
             case C.UPDATE_NAVIGATION_PATHNAME_AND_SEARCH:
