@@ -2,6 +2,10 @@
   "name": "twisted-management",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "verbose": true
+     
+  },
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",

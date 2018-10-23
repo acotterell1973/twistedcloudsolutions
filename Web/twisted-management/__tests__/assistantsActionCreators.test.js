@@ -1,4 +1,4 @@
-import C from "../services/constants";
+import C from "../src/scenes/Assistants/services/constants";
 import {
   initializeAssistant,
   initializeAddress,

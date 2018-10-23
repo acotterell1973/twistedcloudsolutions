@@ -1,11 +1,12 @@
-import C from "../services/constants";
+import C from "../src/scenes/Assistants/services/constants";
 import {
   assistants,
   assistant
 } from "./assistantsReducer";
+import initialStateMockData from "./__mockdata__/state/initialStateMockData";
+
 import {
-  storeFactory,
-  intialState
+  storeFactory
 } from "../../../storeFactory";
 import deepFreeze from "deep-freeze";
 import {
@@ -16,7 +17,7 @@ describe("assistant reducer", () => {
   let store;
 
   beforeAll(() => {
-    store = storeFactory(intialState);
+    store = storeFactory(initialStateMockData);
     //console.log(store.getState());
   });
 

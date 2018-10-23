@@ -1,11 +1,12 @@
-import C from "./constants";
+import C from "../src/constants";
 import {
   setNavigationPath,
   setNavigationPathAndQuery
 } from "./navigationDetailActions";
+import initialStateMockData from "./__mockdata__/state/initialStateMockData";
+
 import {
-  storeFactory,
-  intialState
+  storeFactory
 } from "./storeFactory";
 
 import deepFreeze from "deep-freeze";
@@ -17,7 +18,10 @@ describe("navigation detail reducer", () => {
   let store;
 
   beforeAll(() => {
-    store = storeFactory(intialState);
+    console.log("IN BEFORE ALL");
+    console.log("INITIAL STATE" + initialStateMockData);
+    
+    store = storeFactory(initialStateMockData);
     //console.log(store.getState());
   });
 
