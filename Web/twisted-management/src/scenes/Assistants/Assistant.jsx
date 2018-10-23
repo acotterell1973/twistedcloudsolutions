@@ -30,13 +30,13 @@ import userProfileStyles from 'assets/jss/material-dashboard-react/views/extende
 import avatar from 'assets/img/generic-person.png';
 
 
-
 class AssistantUserProfile extends Component {
     constructor(props, {store}) {
         super(props,{store});
   
     }
     render() {
+        
         const { classes } = this.props;
         const { store } = this.context;
     
