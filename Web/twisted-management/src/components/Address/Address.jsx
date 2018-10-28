@@ -24,6 +24,7 @@ class AddressForm extends Component {
 
   }
   componentDidMount() {
+    
     const google = window.google;
 
     this.streetname = new google.maps.places.Autocomplete(
@@ -51,7 +52,6 @@ class AddressForm extends Component {
     let addressObject = this.streetname.getPlace();
     let address = addressObject.address_components;
 
-    debugger;
     this.setState({
       name: addressObject.name,
       street_address: `${address[0].long_name} ${address[1].long_name}`,

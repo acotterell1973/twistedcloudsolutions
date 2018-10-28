@@ -14,7 +14,7 @@ import './assets/css/material-dashboard-react.css?v=1.4.1';
 import { appConstants } from './appConstants';
 
 const hist = createBrowserHistory();
-const store = storeFactory(initialStateMockData);
+const store = storeFactory();
 
 console.log(store.getState());
 store.subscribe(() => {
@@ -34,3 +34,9 @@ ReactDOM.render(
     </Provider>,
     document.getElementById("root")
 );
+/*
+const script = document.createElement("script");
+script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD3W3rqhz-vSPRxlgPLbCTzmoCatvDX02o&libraries=places";
+script.async = true;
+
+document.body.appendChild(script);*/

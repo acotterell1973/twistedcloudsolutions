@@ -26,18 +26,13 @@ const Sidebar = ({ ...props }) => {
     <List className={classes.list}>
       {routes.map((prop, key) => {
         if (prop.redirect) return null;
+        if (prop.invisible) return null;
         var activePro = " ";
         var listItemClasses;
-        if (prop.path === "/upgrade-to-pro") {
-          activePro = classes.activePro + " ";
-          listItemClasses = classNames({
-            [" " + classes[color]]: true
-          });
-        } else {
-          listItemClasses = classNames({
-            [" " + classes[color]]: activeRoute(prop.path)
-          });
-        }
+        listItemClasses = classNames({
+          [" " + classes[color]]: activeRoute(prop.path)
+        });
+        
         const whiteFontClasses = classNames({
           [" " + classes.whiteFont]: activeRoute(prop.path)
         });
@@ -67,16 +62,7 @@ const Sidebar = ({ ...props }) => {
       })}
     </List>
   );
-  var brand = (
-    <div className={classes.logo}>
-      <a href="https://www.creative-tim.com" className={classes.logoLink}>
-        <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
-        </div>
-        {logoText}
-      </a>
-    </div>
-  );
+
   return (
     <div>
       <Hidden mdUp implementation="css">
@@ -92,7 +78,6 @@ const Sidebar = ({ ...props }) => {
             keepMounted: true // Better open performance on mobile.
           }}
         >
-          {brand}
           <div className={classes.sidebarWrapper}>
             <HeaderLinks />
             {links}
@@ -114,7 +99,6 @@ const Sidebar = ({ ...props }) => {
             paper: classes.drawerPaper
           }}
         >
-          {brand}
           <div className={classes.sidebarWrapper}>{links}</div>
           {image !== undefined ? (
             <div
