@@ -10,6 +10,7 @@ export const navigationDetail = (state = {}, action) => {
                 search: null,
                 referrer: action.referrer
             }
+            
             case C.UPDATE_NAVIGATION_PATHNAME_AND_SEARCH:
             return {
                 ...state,

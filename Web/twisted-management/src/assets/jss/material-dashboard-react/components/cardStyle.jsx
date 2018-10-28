@@ -1,3 +1,5 @@
+import { callbackify } from "util";
+
 const cardStyle = {
   card: {
     border: "0",
@@ -13,7 +15,8 @@ const cardStyle = {
     flexDirection: "column",
     minWidth: "0",
     wordWrap: "break-word",
-    fontSize: ".875rem"
+    fontSize: ".875rem",
+    //minHeight: "calc(100vh - 130px)"
   },
   cardPlain: {
     background: "transparent",

@@ -7,10 +7,10 @@ import {
   editAssistantName,
   editAddress
 
-} from "../services/actions";
+} from "../src/scenes/Assistants/services/actions";
 import { v4 } from "uuid";
-import { assistants, assistant } from "./assistantsReducer";
-import { storeFactory, intialState } from "../../../storeFactory";
+import { assistants, assistant } from "../src/scenes/Assistants/reducers/assistantsReducer";
+import { storeFactory, intialState } from "../src/storeFactory";
 import deepFreeze from "deep-freeze";
 
 describe("assistants reducer", () => {

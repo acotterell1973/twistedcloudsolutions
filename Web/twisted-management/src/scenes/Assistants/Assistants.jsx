@@ -21,9 +21,8 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 
 import extendedTablesStyle from 'assets/jss/material-dashboard-react/views/extendedTablesStyle.jsx';
 import 'react-table/react-table.css';
-
 import { setNavigationPath } from "../../navigationDetailActions";
-import { debug } from 'util';
+import AppContentWithActionBarContainer from "./components/appContentWithActionBar";
 
 class Assistants extends React.Component {
     constructor(props, { store }) {
@@ -52,7 +51,7 @@ class Assistants extends React.Component {
                             round
                             onClick={() => {
                                 store.dispatch(setNavigationPath('/assistant/1', true, null));
-                                this.forceUpdate();
+                                //this.forceUpdate();
                             }}
                             color="warning"
                             className="edit"
@@ -131,8 +130,8 @@ class Assistants extends React.Component {
             filterable: false
         }];
 
-        debugger;
         if (navigationDetail.canNavigate) {
+            store.dispatch(setNavigationPath('/assistant/1', false, null));
             return (<Redirect to={{
                 pathname: '/assistant/1',
                 search: '?utm=your+face',
@@ -141,6 +140,7 @@ class Assistants extends React.Component {
         }
 
         return (
+            <AppContentWithActionBarContainer ActionBarButtons={[{ name: "Add New Assistant", color: "Info", icon: "Add" }]}>
             <GridContainer>
                 <GridItem xs={12}>
                     <Card>
@@ -151,15 +151,18 @@ class Assistants extends React.Component {
                             <h4 className={classes.cardIconTitle}>Assistants</h4>
                         </CardHeader>
                         <CardBody>
-                            <ReactTable
+                        <ReactTable
                                 data={tableData}
                                 columns={columns}
                                 className="-striped -highlight"
+                                defaultPageSize="5"
                             />
                         </CardBody>
                     </Card>
                 </GridItem>
+            
             </GridContainer>
+            </AppContentWithActionBarContainer>
         );
     }
 }

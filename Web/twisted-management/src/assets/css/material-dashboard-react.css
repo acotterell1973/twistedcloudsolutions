@@ -64,6 +64,7 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.5em;
+  height: 100%;
 }
 
 blockquote footer:before, blockquote small:before {

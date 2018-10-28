@@ -2,12 +2,12 @@ import C from "../src/scenes/Assistants/services/constants";
 import {
   assistants,
   assistant
-} from "./assistantsReducer";
-import initialStateMockData from "./__mockdata__/state/initialStateMockData";
+} from "../src/scenes/Assistants/reducers/assistantsReducer";
+import initialStateMockData from "../src/__mockdata__/state/initialStateMockData";
 
 import {
   storeFactory
-} from "../../../storeFactory";
+} from "../src/storeFactory";
 import deepFreeze from "deep-freeze";
 import {
   v4

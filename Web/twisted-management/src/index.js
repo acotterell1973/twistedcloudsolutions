@@ -8,11 +8,10 @@ import { Provider } from 'react-redux';
 import { storeFactory } from './storeFactory';
 import initialStateMockData from "./__mockdata__/state/initialStateMockData";
 
+
 import indexRoutes from "./routes/index";
 import './assets/css/material-dashboard-react.css?v=1.4.1';
 import { appConstants } from './appConstants';
-import { editAssistantName } from './scenes/Assistants/services/actions';
-
 
 const hist = createBrowserHistory();
 const store = storeFactory(initialStateMockData);

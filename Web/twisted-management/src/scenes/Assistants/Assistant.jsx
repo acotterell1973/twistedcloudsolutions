@@ -25,6 +25,8 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 import CardIcon from 'components/Card/CardIcon.jsx';
 import CardAvatar from 'components/Card/CardAvatar.jsx';
 import AddressForm from 'components/Address/Address.jsx';
+import AppContentWithActionBarContainer from "./components/appContentWithActionBar";
+
 
 import userProfileStyles from 'assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx';
 import avatar from 'assets/img/generic-person.png';
@@ -42,6 +44,7 @@ class AssistantUserProfile extends Component {
     
         let assistants = store.getState()
         return (
+            <AppContentWithActionBarContainer  ActionBarButtons={[{ name: "Update Assistant Profile", color: "Info" }]}>
             <div>
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={8}>
@@ -160,9 +163,7 @@ class AssistantUserProfile extends Component {
                                         />
                                     </GridItem>
                                 </GridContainer>
-                                <Button color="rose" className={classes.updateProfileButton}>
-                  Update Profile
-                                </Button>
+                              
                                 <Clearfix />
                             </CardBody>
                         </Card>
@@ -182,6 +183,7 @@ class AssistantUserProfile extends Component {
                     </GridItem>
                 </GridContainer>
             </div>
+            </AppContentWithActionBarContainer>
         );
     }
 }
