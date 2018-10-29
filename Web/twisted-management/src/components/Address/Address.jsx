@@ -11,10 +11,9 @@ import FormControl from "@material-ui/core/FormControl";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-
 import extendedFormsStyle from "assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx";
-
 import { States } from "staticdata/listOfStates";
+import explodeAddress from "./ParseAddressString";
 
 class AddressForm extends Component {
   constructor(props) {
@@ -49,17 +48,27 @@ class AddressForm extends Component {
   }
 
   handlePlaceSelect() {
+    debugger;
     let addressObject = this.streetname.getPlace();
     let address = addressObject.address_components;
 
-    this.setState({
+    let test = explodeAddress(addressObject.formatted_address, function(err,addressObj){
+      debugger;
+      console.log('Street: ', addressObj.street_address1)
+      console.log('City: ', addressObj.city)
+      console.log('State: ', addressObj.state)
+      console.log('Zip: ', addressObj.postal_code)
+      console.log('Country: ', addressObj.country)
+    });
+
+    /*this.setState({
       name: addressObject.name,
       street_address: `${address[0].long_name} ${address[1].long_name}`,
       city: address[4].long_name,
       state: address[6].short_name,
       zip_code: address[8].short_name,
       googleMapLink: addressObject.url
-    });
+    });*/
   }
   render() {
     const { classes, addressOwnerId,addressInfo } = this.props;

@@ -14,6 +14,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.json$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'json-loader'
+                }
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
                 use: {

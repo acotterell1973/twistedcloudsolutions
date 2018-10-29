@@ -148,12 +148,11 @@ class Assistants extends React.Component {
     ];
 
     if (navigationDetail.canNavigate) {
-      store.dispatch(setNavigationPath("/assistant/1", false, null));
+      store.dispatch(setNavigationPath("/assistant/", false, null));
       return (
         <Redirect
           to={{
-            pathname: "/assistant/1",
-            search: "?utm=your+face",
+            pathname: "/assistant/",
             state: { assistantId: "currentLocation" }
           }}
           push

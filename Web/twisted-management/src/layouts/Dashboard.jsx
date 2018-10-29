@@ -53,12 +53,6 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
-        const script = document.createElement("script");
-        script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD3W3rqhz-vSPRxlgPLbCTzmoCatvDX02o&libraries=places";
-        script.async = true;
-    
-        document.body.appendChild(script);
-    
         if (navigator.platform.indexOf("Win") > -1) {
             ps = new PerfectScrollbar(this.refs.mainPanel, {
                 suppressScrollX: true,
@@ -109,7 +103,7 @@ class App extends React.Component {
                 <div className={mainPanel} ref="mainPanel">
                     <Header
                         routes={dashboardRoutes}
-                        handleDrawerToggle={this.handleDrawerToggle}
+                        
                         {...rest}
                     />
                     {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}

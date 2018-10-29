@@ -8,15 +8,11 @@ import Face from '@material-ui/icons/Face';
 import Person from '@material-ui/icons/Person';
 import Email from '@material-ui/icons/Email';
 import Phone from '@material-ui/icons/Phone';
-
-
 // @material-ui/icons
 import PermIdentity from '@material-ui/icons/PermIdentity';
-
 // core components
 import GridContainer from 'components/Grid/GridContainer.jsx';
 import GridItem from 'components/Grid/GridItem.jsx';
-import Button from 'components/CustomButtons/Button.jsx';
 import CustomInput from 'components/CustomInput/CustomInput.jsx';
 import Clearfix from 'components/Clearfix/Clearfix.jsx';
 import Card from 'components/Card/Card.jsx';
@@ -26,8 +22,6 @@ import CardIcon from 'components/Card/CardIcon.jsx';
 import CardAvatar from 'components/Card/CardAvatar.jsx';
 import AddressForm from 'components/Address/Address.jsx';
 import AppContentWithActionBarContainer from "./components/appContentWithActionBar";
-
-
 import userProfileStyles from 'assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx';
 import avatar from 'assets/img/generic-person.png';
 
