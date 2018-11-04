@@ -6,7 +6,7 @@ import { Router, Route, Switch } from "react-router-dom";
 //Redux
 import { Provider } from 'react-redux';
 import { storeFactory } from './storeFactory';
-import initialStateMockData from "./__mockdata__/state/initialStateMockData";
+//import initialStateMockData from "./__mockdata__/state/initialStateMockData";
 
 
 import indexRoutes from "./routes/index";

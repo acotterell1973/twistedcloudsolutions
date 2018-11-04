@@ -33,8 +33,8 @@ class Assistants extends React.Component {
 
   addAssistant() {
     const { store } = this.context;
-    store.dispatch(setNavigationPath("/assistant/", true, null));
-    this.forceUpdate();
+    store.dispatch(setNavigationPath("/assistant/new", true, null));
+    this.forceUpdate(); // in the future figure out what's wrong with the state to cause us to use forceUpdate
   }
 
   render() {
@@ -148,11 +148,11 @@ class Assistants extends React.Component {
     ];
 
     if (navigationDetail.canNavigate) {
-      store.dispatch(setNavigationPath("/assistant/", false, null));
+      var path = store.getState().navigationDetail.pathname;
       return (
         <Redirect
           to={{
-            pathname: "/assistant/",
+            pathname: path,
             state: { assistantId: "currentLocation" }
           }}
           push

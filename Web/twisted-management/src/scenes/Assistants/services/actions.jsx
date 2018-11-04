@@ -4,7 +4,7 @@ import { v4 } from "uuid";
 
 export const initializeAssistant = id => ({
   type: C.ADD_ASSISTANT,
-  id
+  id: id || v4()
 });
 
 export const initializeEmail = (id, emailId) => ({
@@ -89,4 +89,9 @@ export const editAssistantEmail = (id, email, emailType) => ({
   id,
   email,
   emailType,
+});
+
+export const getAssistant = (id) => ({
+  type: C.GET_ASSISTANT,
+  id
 });

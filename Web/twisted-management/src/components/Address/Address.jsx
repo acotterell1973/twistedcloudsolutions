@@ -18,60 +18,53 @@ import explodeAddress from "./ParseAddressString";
 class AddressForm extends Component {
   constructor(props) {
     super(props);
-    this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-
+ 
   }
+
+  props;
   componentDidMount() {
-    
+    const { onAddressChange } = this.props;
     const google = window.google;
+    const autocompleteFormField = document.getElementById(`streetname`);
 
     this.streetname = new google.maps.places.Autocomplete(
-      document.getElementById("streetname"),
-      {}
+      autocompleteFormField,
+      {
+        types: [`address`],
+        componentRestrictions: [`us`]
+      }
     );
 
-    this.streetname.addListener("place_changed", this.handlePlaceSelect);
-  }
+    this.streetname.addListener("place_changed", () => {
+      let addressObject = this.streetname.getPlace();
+      let address = addressObject.address_components;
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+      let test = explodeAddress(addressObject.formatted_address, function(
+        err,
+        addressObj
+      ) {
+        
+        let event = {
+          target: {
+            type: "addressInfo",
+            name: "address",
+            value: addressObj,
+            err
+          }
+        };
+        onAddressChange(event);
 
- 
-  handleSubmit(event) {
-    event.preventDefault();
-    // this.props.dispatch(addParlor(this.state));
-    // this is just some redux.
-    // just trust that it does what it's supposed to do,
-    // send an ajax request to my server
-  }
-
-  handlePlaceSelect() {
-    debugger;
-    let addressObject = this.streetname.getPlace();
-    let address = addressObject.address_components;
-
-    let test = explodeAddress(addressObject.formatted_address, function(err,addressObj){
-      debugger;
-      console.log('Street: ', addressObj.street_address1)
-      console.log('City: ', addressObj.city)
-      console.log('State: ', addressObj.state)
-      console.log('Zip: ', addressObj.postal_code)
-      console.log('Country: ', addressObj.country)
+        console.log("Street: ", addressObj.street_address1);
+        console.log("City: ", addressObj.city);
+        console.log("State: ", addressObj.state);
+        console.log("Zip: ", addressObj.postal_code);
+        console.log("Country: ", addressObj.country);
+      });
     });
-
-    /*this.setState({
-      name: addressObject.name,
-      street_address: `${address[0].long_name} ${address[1].long_name}`,
-      city: address[4].long_name,
-      state: address[6].short_name,
-      zip_code: address[8].short_name,
-      googleMapLink: addressObject.url
-    });*/
   }
+
   render() {
-    const { classes, addressOwnerId,addressInfo } = this.props;
+    const { classes, addressOwnerId, addressInfo } = this.props;
     const { store } = this.context;
 
     return (
@@ -87,9 +80,9 @@ class AddressForm extends Component {
                     fullWidth: true
                   }}
                   inputProps={{
-                    value:addressInfo.streetNumber,
-                    onChange: event => this.change(event, "firstname", "length", 3),
-                    
+                    value: addressInfo.streetNumber,
+                    onChange: event =>
+                      this.change(event, "firstname", "length", 3)
                   }}
                 />
               </GridItem>
@@ -127,7 +120,10 @@ class AddressForm extends Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <FormControl fullWidth className={classes.selectFormControl}>
-                  <InputLabel htmlFor="state-select" className={classes.selectLabel} >
+                  <InputLabel
+                    htmlFor="state-select"
+                    className={classes.selectLabel}
+                  >
                     State
                   </InputLabel>
                   <Select
@@ -150,15 +146,18 @@ class AddressForm extends Component {
                     >
                       Choose State
                     </MenuItem>
-                    {
-                      States.map((state, idx) =>
-                        <MenuItem key={idx} classes={{
+                    {States.map((state, idx) => (
+                      <MenuItem
+                        key={idx}
+                        classes={{
                           root: classes.selectMenuItem,
                           selected: classes.selectMenuItemSelected
-                        }} value={state.abbreviation} >{state.name}</MenuItem>
-                      )
-                    }
-
+                        }}
+                        value={state.abbreviation}
+                      >
+                        {state.name}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </GridItem>
@@ -180,5 +179,5 @@ class AddressForm extends Component {
 }
 AddressForm.contextTypes = {
   store: PropTypes.object
-}
+};
 export default withStyles(extendedFormsStyle)(AddressForm);

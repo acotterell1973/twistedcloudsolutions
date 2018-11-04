@@ -16,7 +16,7 @@ const dashboardRoutes = [
   { path: "/schedules", sidebarName: "Schedule", navbarName: "Appointments", icon: CalendarToday, component: SchedulesView },
   { path: "/clients", sidebarName: "Clients", navbarName: "Clients", icon: Group, component: ClientsView },
   { path: "/assistants", sidebarName: "Assistants",  icon: Group, component: AssistantsView },
-  { path: "/assistant/", component: AssistantProfile, invisible: true },
+  { path: "/assistant/:id", component: AssistantProfile, invisible: true },
   { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }];
 
 export default dashboardRoutes;   

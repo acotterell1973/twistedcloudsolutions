@@ -1,5 +1,6 @@
 import C from "../services/constants";
 import assistantDetail from "./assistantDetailReducer";
+import { stat } from "fs";
 
 export const assistant = (state = {}, action) => {
   let assistant = {
@@ -36,11 +37,11 @@ export const assistant = (state = {}, action) => {
     case C.EDIT_ASSISTANT_EMAIL:
       if (state.id !== action.id) return state;
       let { emailAddress } = assistant;
-////      let emailAddressrEntry = assistantDetail(
- //       emailAddress.first || {},
- //       action
-//);
-  //    assistant.emailAddress = [{ ...emailAddressEntry }];
+      ////      let emailAddressrEntry = assistantDetail(
+      //       emailAddress.first || {},
+      //       action
+      //);
+      //    assistant.emailAddress = [{ ...emailAddressEntry }];
       return assistant;
 
     case C.EDIT_ASSISTANT:
@@ -54,6 +55,8 @@ export const assistant = (state = {}, action) => {
             nationality: action.nationality,
             genderType: action.genderType
           };
+    case C.GET_ASSISTANT:
+      return state.id !== action.id ? state : { ...state };
 
     default:
       return state;
@@ -75,6 +78,9 @@ export const assistants = (state = [], action) => {
     case C.EDIT_ASSISTANT_PHONE:
     case C.EDIT_ASSISTANT_EMAIL:
       return state.map(entity => assistant(entity, action));
+
+    case C.GET_ASSISTANT:
+      return state.reduce(entity => assistant(entity, action));
 
     //case C.REMOVE_ASSISTANT:
     //state.filter(assistant => assistant.Id != action.Id);

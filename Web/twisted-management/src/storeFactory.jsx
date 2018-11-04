@@ -22,7 +22,7 @@ const saver = store => next => action => {
   return result;
 };
 export const storeFactory = intialState =>
-  applyMiddleware(saver)(createStore)(
+  applyMiddleware(logger, saver)(createStore)(
     combineReducers({ navigationDetail, assistants }),
     localStorage[appConstants.LOCAL_STORE_NAME]
       ? intialState
