@@ -18,12 +18,12 @@ import explodeAddress from "./ParseAddressString";
 class AddressForm extends Component {
   constructor(props) {
     super(props);
- 
+
   }
 
-  props;
+  //Start View event cycle
   componentDidMount() {
-    const { onAddressChange } = this.props;
+    const { onChange } = this.props;
     const google = window.google;
     const autocompleteFormField = document.getElementById(`streetname`);
 
@@ -37,13 +37,8 @@ class AddressForm extends Component {
 
     this.streetname.addListener("place_changed", () => {
       let addressObject = this.streetname.getPlace();
-      let address = addressObject.address_components;
 
-      let test = explodeAddress(addressObject.formatted_address, function(
-        err,
-        addressObj
-      ) {
-        
+      explodeAddress(addressObject.formatted_address, function (err, addressObj) {
         let event = {
           target: {
             type: "addressInfo",
@@ -52,21 +47,14 @@ class AddressForm extends Component {
             err
           }
         };
-        onAddressChange(event);
 
-        console.log("Street: ", addressObj.street_address1);
-        console.log("City: ", addressObj.city);
-        console.log("State: ", addressObj.state);
-        console.log("Zip: ", addressObj.postal_code);
-        console.log("Country: ", addressObj.country);
+        onChange(event);
       });
     });
   }
 
   render() {
-    const { classes, addressOwnerId, addressInfo } = this.props;
-    const { store } = this.context;
-
+    const { classes, addressInfo, onChange, onBlur } = this.props;
     return (
       <div>
         <form>
@@ -75,37 +63,23 @@ class AddressForm extends Component {
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Street Number"
-                  id="street-number"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                  inputProps={{
-                    value: addressInfo.streetNumber,
-                    onChange: event =>
-                      this.change(event, "firstname", "length", 3)
-                  }}
-                />
+                  formControlProps={{ fullWidth: true }}
+                  inputProps={{ name: "street-number", value: addressInfo.streetNumber, onChange, onBlur }} />
               </GridItem>
               <GridItem xs={12} sm={12} md={8}>
                 <CustomInput
-                  labelText="Street Name"
                   id="streetname"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
+                  labelText="Street Name"
+                  inputProps={{ name: "street-name", value: addressInfo.streetName, onChange, onBlur }}
+                  formControlProps={{ fullWidth: true }} />
               </GridItem>
             </GridContainer>
-
             <GridContainer>
               <GridItem xs={12} sm={12} md={12}>
                 <CustomInput
                   labelText="Unit"
-                  id="unit-number"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
+                  inputProps={{ name: "unit-name", value: addressInfo.unitName, onChange, onBlur }}
+                  formControlProps={{ fullWidth: false }} />
               </GridItem>
             </GridContainer>
             <GridContainer>
@@ -113,48 +87,30 @@ class AddressForm extends Component {
                 <CustomInput
                   labelText="City"
                   id="city"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
+                  inputProps={{ name: "city", value: addressInfo.city, onChange, onBlur }}
+                  formControlProps={{ fullWidth: true }} />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
                 <FormControl fullWidth className={classes.selectFormControl}>
                   <InputLabel
-                    htmlFor="state-select"
-                    className={classes.selectLabel}
-                  >
+                    htmlFor="state-select" className={classes.selectLabel} >
                     State
                   </InputLabel>
                   <Select
-                    MenuProps={{
-                      className: classes.selectMenu
-                    }}
-                    classes={{
-                      select: classes.select
-                    }}
+                    MenuProps={{ className: classes.selectMenu }}
+                    classes={{ select: classes.select }}
                     value={addressInfo.state}
-                    inputProps={{
-                      id: "state-select"
-                    }}
-                  >
+                    inputProps={{ id: "state-select", name: "state-select", value: addressInfo.city, onChange, onBlur }} >
                     <MenuItem
                       disabled
-                      classes={{
-                        root: classes.selectMenuItem
-                      }}
-                    >
+                      classes={{ root: classes.selectMenuItem }} >
                       Choose State
                     </MenuItem>
                     {States.map((state, idx) => (
                       <MenuItem
                         key={idx}
-                        classes={{
-                          root: classes.selectMenuItem,
-                          selected: classes.selectMenuItemSelected
-                        }}
-                        value={state.abbreviation}
-                      >
+                        classes={{ root: classes.selectMenuItem, selected: classes.selectMenuItemSelected }}
+                        value={state.abbreviation}>
                         {state.name}
                       </MenuItem>
                     ))}
@@ -164,11 +120,8 @@ class AddressForm extends Component {
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Postal Code"
-                  id="postal-code"
-                  formControlProps={{
-                    fullWidth: true
-                  }}
-                />
+                  inputProps={{ name: "postal-code", value: addressInfo.city, onChange, onBlur }}
+                  formControlProps={{ fullWidth: true }}  />
               </GridItem>
             </GridContainer>
           </div>

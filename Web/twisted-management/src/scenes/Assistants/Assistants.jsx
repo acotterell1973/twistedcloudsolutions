@@ -149,6 +149,7 @@ class Assistants extends React.Component {
 
     if (navigationDetail.canNavigate) {
       var path = store.getState().navigationDetail.pathname;
+      store.dispatch(setNavigationPath(path, false, null));
       return (
         <Redirect
           to={{

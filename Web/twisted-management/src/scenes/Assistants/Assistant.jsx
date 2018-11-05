@@ -24,8 +24,6 @@ import AddressForm from "components/Address/Address.jsx";
 import AppContentWithActionBarContainer from "./components/appContentWithActionBar";
 import userProfileStyles from "assets/jss/material-dashboard-react/views/extendedFormsStyle.jsx";
 import avatar from "assets/img/generic-person.png";
-import { v4 } from "uuid";
-import C from "scenes/Assistants/services/constants";
 import {
   initializeAssistant,
   initializeAddress,
@@ -35,23 +33,55 @@ import {
   editAddress,
   getAssistant
 } from "scenes/Assistants/services/actions";
-import { assistants, assistant } from "./reducers/assistantsReducer";
+import { assistants } from "./reducers/assistantsReducer";
 
 class AssistantUserProfile extends Component {
   constructor(props, { store }) {
     super(props, { store });
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.state = {
+      validating: false
+    }
   }
   //Properties
   assistantId = null;
 
   //class methods
-  handleInputChange(event) {
+  handleBlur(event) {
+
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.value;
     const name = target.name;
-    debugger;
+
+    console.log('input blur: ' + name + ' value: ' + value);
+  }
+
+  handleInputChange(event) {
+    const { store } = this.context;
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    console.log('input change: ' + name + ' value: ' + value);
+    switch (name) {
+      case 'first-name':
+        store.dispatch(editAssistantName(this.assistantId, value, null, null));
+        break;
+      case 'last-name':
+        store.dispatch(editAssistantName(this.assistantId, null, value, null));
+        break;
+      default:
+        break;
+    }
+
+    //console.log("Street: ", addressObj.street_address1);
+    //console.log("City: ", addressObj.city);
+    //console.log("State: ", addressObj.state);
+    //console.log("Zip: ", addressObj.postal_code);
+    //console.log("Country: ", addressObj.country);
+
   }
 
   //Start View event cycle
@@ -108,6 +138,7 @@ class AssistantUserProfile extends Component {
                           name: "first-name",
                           value: assistant.name.first,
                           onChange: this.handleInputChange,
+                          onBlur: this.handleBlur,
                           endAdornment: (
                             <InputAdornment
                               position="end"
@@ -133,6 +164,7 @@ class AssistantUserProfile extends Component {
                           name: "last-name",
                           value: assistant.name.last,
                           onChange: this.handleInputChange,
+                          onBlur: this.handleBlur,
                           endAdornment: (
                             <InputAdornment
                               position="end"
@@ -148,7 +180,8 @@ class AssistantUserProfile extends Component {
                   <GridContainer>
                     <GridItem xs={12} sm={12} md={12}>
                       <AddressForm
-                        onAddressChange={this.handleInputChange}
+                        onChange={this.handleInputChange}
+                        onBlur={this.handleBlur}
                         addressOwnerId={assistant.id}
                         addressInfo={{
                           streetNumber: assistant.address[0].streetNumber,
@@ -173,7 +206,10 @@ class AssistantUserProfile extends Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          name: "phone-number",
                           value: assistant.phoneNumber[0].number,
+                          onChange: this.handleInputChange,
+                          onBlur: this.handleBlur,
                           endAdornment: (
                             <InputAdornment
                               position="end"
@@ -196,7 +232,10 @@ class AssistantUserProfile extends Component {
                           fullWidth: true
                         }}
                         inputProps={{
+                          name: "email-address",
                           value: assistant.emailAddress[0].email,
+                          onChange: this.handleInputChange,
+                          onBlur: this.handleBlur,
                           endAdornment: (
                             <InputAdornment
                               position="end"
