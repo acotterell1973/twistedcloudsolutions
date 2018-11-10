@@ -1,6 +1,5 @@
 import C from "../services/constants";
 import assistantDetail from "./assistantDetailReducer";
-import { stat } from "fs";
 
 export const assistant = (state = {}, action) => {
   let assistant = {
@@ -13,7 +12,6 @@ export const assistant = (state = {}, action) => {
     case C.ADD_ASSISTANT_PHONE:
     case C.ADD_ASSISTANT_EMAIL:
       return assistantDetail(state, action);
-      break;
 
     case C.EDIT_ASSISTANT_NAME:
       let { name } = assistant;
@@ -36,12 +34,7 @@ export const assistant = (state = {}, action) => {
 
     case C.EDIT_ASSISTANT_EMAIL:
       if (state.id !== action.id) return state;
-      let { emailAddress } = assistant;
-      ////      let emailAddressrEntry = assistantDetail(
-      //       emailAddress.first || {},
-      //       action
-      //);
-      //    assistant.emailAddress = [{ ...emailAddressEntry }];
+   
       return assistant;
 
     case C.EDIT_ASSISTANT:

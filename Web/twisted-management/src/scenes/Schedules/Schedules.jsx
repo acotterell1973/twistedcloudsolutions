@@ -1,5 +1,4 @@
 import React from "react";
-import ReactTable from "react-table"
 import { withStyles } from "@material-ui/core";
 import { cardTitle } from "assets/jss/material-dashboard-react";
 
@@ -16,9 +15,6 @@ const style = {
 };
 
 class Schedules extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

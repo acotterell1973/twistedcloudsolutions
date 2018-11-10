@@ -30,7 +30,6 @@ import {
   initializeEmail,
   initializePhone,
   editAssistantName,
-  editAddress,
   getAssistant
 } from "scenes/Assistants/services/actions";
 import { assistants } from "./reducers/assistantsReducer";
@@ -75,7 +74,7 @@ class AssistantUserProfile extends Component {
         break;
     }
 
-    this.forceUpdate();
+   // this.forceUpdate();
 
     //console.log("Street: ", addressObj.street_address1);
     //console.log("City: ", addressObj.city);

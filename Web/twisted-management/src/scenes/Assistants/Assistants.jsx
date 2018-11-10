@@ -186,7 +186,7 @@ class Assistants extends React.Component {
                   data={tableData}
                   columns={columns}
                   className="-striped -highlight"
-                  defaultPageSize="5"
+                  defaultPageSize={5}
                 />
               </CardBody>
             </Card>

@@ -16,10 +16,6 @@ import { States } from "staticdata/listOfStates";
 import explodeAddress from "./ParseAddressString";
 
 class AddressForm extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   //Start View event cycle
   componentDidMount() {
@@ -100,7 +96,7 @@ class AddressForm extends Component {
                     MenuProps={{ className: classes.selectMenu }}
                     classes={{ select: classes.select }}
                     value={addressInfo.state}
-                    inputProps={{ id: "state-select", name: "state-select", value: addressInfo.city, onChange, onBlur }} >
+                    inputProps={{ id: "state-select", name: "state-select", value: addressInfo.state, onChange, onBlur }} >
                     <MenuItem
                       disabled
                       classes={{ root: classes.selectMenuItem }} >

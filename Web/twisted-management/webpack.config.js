@@ -1,7 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
 const webpack = require('webpack');
-
+new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }
+  })
+  var debug = process.env.NODE_ENV !== "production";
+console.log("MODE = " + process.env.NODE_ENV)
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
@@ -10,7 +16,7 @@ module.exports = {
         filename: 'twisted-management-app.js',
         sourceMapFilename: 'twisted-management-app.map'
     },
-    devtool: '#source-map',
+    devtool: debug ? '#source-map' : null,
     module: {
         rules: [
             {
@@ -54,9 +60,13 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: [' ','.js', '.jsx'],
+        alias: {
+            'Components': path.resolve(__dirname, '/components')
+          }
     },
-    plugins: [
+    
+    plugins: debug ? [] : [
         new HtmlWebpackPlugin({
             title: 'Twisted Cloud Management',
             filename: 'index.html',
@@ -64,5 +74,5 @@ module.exports = {
         })
     ],
 
-    optimization: { minimize: true }
+    optimization: { minimize: false }
 }

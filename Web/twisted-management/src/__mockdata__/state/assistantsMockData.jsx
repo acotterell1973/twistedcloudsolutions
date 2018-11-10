@@ -37,7 +37,7 @@ var generateAssistancesData = function () {
           }
         ],
         dob: chance.birthday({ string: true }),
-        nationality: chance.country({ full: true }),
+        nationality: '',
         genderType: chance.gender()
       };
     }

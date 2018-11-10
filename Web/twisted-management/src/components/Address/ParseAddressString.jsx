@@ -9,9 +9,9 @@ const explodeAddress = (singleLineAddress,cb)=>{
 			,city: null
 			,state: null
 			,postal_code: null
-			,country: null
+			,country: 'us'
 		}
-		if (typeof singleLineAddress != 'string') {
+		if (typeof singleLineAddress !== 'string') {
 			//return cb(new Error('Input must be a String'))
 			return cb(false,addressObj)
 		}
@@ -22,7 +22,7 @@ const explodeAddress = (singleLineAddress,cb)=>{
 		if (postalCode) {
 			postalCode = postalCode.pop() // pick match closest to end
 			indexOfPostalCode = singleLineAddress.lastIndexOf(postalCode)
-			if (indexOfPostalCode == 0 && singleLineAddress.length > 10) {
+			if (indexOfPostalCode === 0 && singleLineAddress.length > 10) {
 				// postal code is probably part of street address
 				postalCode = null
 				indexOfPostalCode = -1
@@ -43,7 +43,7 @@ const explodeAddress = (singleLineAddress,cb)=>{
 
 		// Handle special cases...
 		// Neighborhood, City, State
-		if (addySplit.length == 3 && looksLikeState(addySplit[2])) {
+		if (addySplit.length === 3 && looksLikeState(addySplit[2])) {
 			addressObj.street_address1 = addySplit[0].trim()
 			addressObj.city = addySplit[1].trim()
 			addressObj.state = addySplit[2].trim()
@@ -73,36 +73,6 @@ const explodeAddress = (singleLineAddress,cb)=>{
 	})
 }
 
-function implodeAddress(addressObj,cb){
-	process.nextTick(function(){
-		if (addressObj === null || typeof addressObj != 'object') {
-			//return cb(new Error('Input must be an Object'))
-			return cb(false, '')
-		}
-		var addyParts = []
-			,addyPart
-		if (typeof addressObj.street_address1 == 'string' && (addyPart = addressObj.street_address1.trim())) {
-			addyParts[0] = addyPart
-			if (typeof addressObj.street_address2 == 'string' && (addyPart = addressObj.street_address2.trim())) {
-				addyParts[0] += ' '+addyPart
-			}
-		}
-		['city','state'].forEach(function(addyKey){
-			if (typeof addressObj[addyKey] == 'string' && (addyPart = addressObj[addyKey].trim())) {
-				addyParts.push(addyPart)
-			}
-		})
-		var singleLineAddress = addyParts.join(', ')
-		if (typeof addressObj.postal_code == 'string' && (addyPart = addressObj.postal_code.trim())) {
-			singleLineAddress += ' '+addyPart
-			singleLineAddress = singleLineAddress.trim()
-		}
-		if (typeof addressObj.country == 'string' && (addyPart = addressObj.country.trim())) {
-			singleLineAddress += singleLineAddress ? ', '+addyPart : addyPart
-		}
-		cb(false,singleLineAddress)
-	})
-}
 
 var states
 function looksLikeState(str){
@@ -133,7 +103,7 @@ function looksLikeCountry(str){
 		}
 	}
 	str = str.trim().toLowerCase()
-	if (str == 'usa') {
+	if (str === 'usa') {
 		return true
 	}
 	return !!countries[str]

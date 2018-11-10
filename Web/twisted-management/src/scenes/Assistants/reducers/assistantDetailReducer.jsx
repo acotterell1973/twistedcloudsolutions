@@ -14,12 +14,12 @@ const assistantDetail = (state = {}, action) => {
         ...phoneNumber,
         {
           id: action.phoneId,
-          number: null,
-          phoneType: null
+          number: '',
+          phoneType: ''
         }
       ];
       return assistant;
-      break;
+
 
     case C.ADD_ASSISTANT_EMAIL:
       if (state.id !== action.id) return state;
@@ -29,12 +29,12 @@ const assistantDetail = (state = {}, action) => {
         ...emailAddress,
         {
           id: action.emailId,
-          email: null,
-          emailType: null
+          email: '',
+          emailType: ''
         }
       ];
       return assistant;
-      break;
+
 
     case C.ADD_ASSISTANT_ADDRESS:
       if (state.id !== action.id) return state;
@@ -44,31 +44,30 @@ const assistantDetail = (state = {}, action) => {
         ...address,
         {
           id: action.addressId,
-          streetNumber: null,
-          streetName: null,
-          unitName: null,
-          city: null,
-          state: null,
-          postCode: null
+          streetNumber: '',
+          streetName: '',
+          unitName: '',
+          city: '',
+          state: '',
+          postCode: ''
         }
       ];
       return assistant;
-      break;
 
     case C.ADD_ASSISTANT:
       return {
-        startWorkDate: null,
-        endWorkDate: null,
+        startWorkDate: '',
+        endWorkDate: '',
         emailAddress: [],
         phoneNumber: [],
         address: [],
         name: {
-          title: null,
-          first: null,
-          last: null
+          title: '',
+          first: '',
+          last: ''
         },
-        dob: null,
-        nationality: null,
+        dob: '',
+        nationality: '',
         genderType: 0,
         id: action.id
       };
@@ -115,7 +114,6 @@ const assistantDetail = (state = {}, action) => {
         nationality: action.nationality || state.nationality,
         genderType: action.genderType || state.genderType
       };
-      break;
 
     default:
       return state;

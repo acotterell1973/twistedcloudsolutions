@@ -1,4 +1,4 @@
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import AssistantUserProfile from "../Assistants/Assistant";
 
 const mapStateToProperties = state => ({});

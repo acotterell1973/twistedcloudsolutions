@@ -9,17 +9,14 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-
-// core components
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
-import Header from "components/Header/Header.jsx";
+import Sidebar from "components/Sidebar/Sidebar";
+import Header from "components/Header/Header";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle";
 
 import dashboardRoutes from "routes/dashboard";
 import image from "assets/img/sidebar-4.jpg";
-import logo from "assets/img/Upload-toCloud-512.png";
+
 
 const switchRoutes = (
     <Switch>
@@ -91,8 +88,6 @@ class App extends React.Component {
             <div className={classes.wrapper}>
                 <Sidebar
                     routes={dashboardRoutes}
-                    logoText={"Twisted Cloud"}
-                    logo={logo}
                     image={image}
                     handleDrawerToggle={this.handleDrawerToggle}
                     open={this.state.mobileOpen}

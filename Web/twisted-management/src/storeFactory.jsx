@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import reduxImmutableStateInvariant  from "redux-immutable-state-invariant";
 import { assistants } from "./scenes/Assistants/reducers/assistantsReducer";
 import { navigationDetail } from "./navigationDetailReducer";
 import { appConstants } from "./appConstants";
@@ -22,7 +23,7 @@ const saver = store => next => action => {
   return result;
 };
 export const storeFactory = intialState =>
-  applyMiddleware(logger, saver)(createStore)(
+  applyMiddleware(reduxImmutableStateInvariant(),logger, saver)(createStore)(
     combineReducers({ navigationDetail, assistants }),
     localStorage[appConstants.LOCAL_STORE_NAME]
       ? intialState
