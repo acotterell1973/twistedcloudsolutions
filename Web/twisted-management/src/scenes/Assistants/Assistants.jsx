@@ -27,13 +27,19 @@ import AppContentWithActionBarContainer from "./components/appContentWithActionB
 class Assistants extends React.Component {
   constructor(props, { store }) {
     super(props, { store });
-    this.addAssistant = this.addAssistant.bind(this);
+    this.addEditAssistant = this.addEditAssistant.bind(this);
+    this.removeAssistant = this.removeAssistant.bind(this);
 
   }
 
-  addAssistant() {
+  removeAssistant(id){
+
+  }
+  
+  addEditAssistant(id) {
     const { store } = this.context;
-    store.dispatch(setNavigationPath("/assistant/new", true, null));
+    var actionPath = "/assistant/" + ((id === null) ? "new" : "edit/" + id)
+    store.dispatch(setNavigationPath(actionPath, true, null));
     this.forceUpdate(); // in the future figure out what's wrong with the state to cause us to use forceUpdate
   }
 
@@ -64,8 +70,7 @@ class Assistants extends React.Component {
               round
               justIcon
               onClick={() => {
-                store.dispatch(setNavigationPath("/assistant/", true, null));
-                //this.forceUpdate();
+                this.addEditAssistant(prop.id);
               }}
               color="warning"
               className="edit"
@@ -164,7 +169,7 @@ class Assistants extends React.Component {
     return (
       <AppContentWithActionBarContainer
         ActionBarButtons={[
-          { name: "Add New Assistant", color: "Info", icon: "Add", eventDelegate:this.addAssistant }
+          { name: "Add New Assistant", color: "Info", icon: "Add", eventDelegate:this.addEditAssistant, params:null }
         ]}
       >
         <GridContainer>

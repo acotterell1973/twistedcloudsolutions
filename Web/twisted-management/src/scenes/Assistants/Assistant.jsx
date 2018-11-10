@@ -43,19 +43,18 @@ class AssistantUserProfile extends Component {
     this.handleBlur = this.handleBlur.bind(this);
     this.state = {
       validating: false
-    }
+    };
   }
   //Properties
   assistantId = null;
 
   //class methods
   handleBlur(event) {
-
     const target = event.target;
     const value = target.value;
     const name = target.name;
 
-    console.log('input blur: ' + name + ' value: ' + value);
+    console.log("input blur: " + name + " value: " + value);
   }
 
   handleInputChange(event) {
@@ -64,37 +63,42 @@ class AssistantUserProfile extends Component {
     const value = target.value;
     const name = target.name;
 
-    console.log('input change: ' + name + ' value: ' + value);
+    console.log("input change: " + name + " value: " + value);
     switch (name) {
-      case 'first-name':
+      case "first-name":
         store.dispatch(editAssistantName(this.assistantId, value, null, null));
         break;
-      case 'last-name':
+      case "last-name":
         store.dispatch(editAssistantName(this.assistantId, null, value, null));
         break;
       default:
         break;
     }
 
+    this.forceUpdate();
+
     //console.log("Street: ", addressObj.street_address1);
     //console.log("City: ", addressObj.city);
     //console.log("State: ", addressObj.state);
     //console.log("Zip: ", addressObj.postal_code);
     //console.log("Country: ", addressObj.country);
-
   }
 
   //Start View event cycle
   componentWillMount() {
     const { match } = this.props;
     const { store } = this.context;
-    if (match.params.id && match.params.id === "new") {
-      this.assistantId = store.dispatch(initializeAssistant()).id;
-      store.dispatch(initializeAddress(this.assistantId, 1));
-      store.dispatch(initializePhone(this.assistantId, 1));
-      store.dispatch(initializeEmail(this.assistantId, 1));
-    } else {
-      this.assistantId = match.params.id;
+
+    if (match.isExact) {
+      if (match.params.action && match.params.action === "new") {
+        this.assistantId = store.dispatch(initializeAssistant()).id;
+        store.dispatch(initializeAddress(this.assistantId, 1));
+        store.dispatch(initializePhone(this.assistantId, 1));
+        store.dispatch(initializeEmail(this.assistantId, 1));
+      } else {
+        if (match.params.action && match.params.action === "edit")
+          this.assistantId = match.params.id;
+      }
     }
   }
 

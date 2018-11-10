@@ -29,7 +29,7 @@ var ActionBar = props => {
         round
         color="info"
         key={key}
-        onClick={prop.eventDelegate}
+        onClick={()=>{prop.eventDelegate(prop.params)}}
       >
         {getActionTypes(prop.icon)}
       </Button>
@@ -42,14 +42,14 @@ var ActionBar = props => {
 
   /* styles */
   const style = {
-    content: {
+    actionBarContent: {
       float: "right"
     }
   };
 
   return (
     <footer className={classes.footer}>
-      <div style={style.content}>{actionButtons}</div>
+      <div style={style.actionBarContent}>{actionButtons}</div>
     </footer>
   );
 };

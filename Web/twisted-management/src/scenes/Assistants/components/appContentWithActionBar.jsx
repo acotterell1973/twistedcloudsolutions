@@ -16,7 +16,7 @@ const style = {
 };
 
 function AppContentWithActionBarContainer(props) {
-    const { children, ...rest } = props;
+    const { children, classes,...rest } = props;
     return (
         <div style={style.mainContent} >
             <div style={style.content}  >

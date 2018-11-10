@@ -76,20 +76,20 @@ const assistantDetail = (state = {}, action) => {
     case C.EDIT_ASSISTANT_NAME:
       return {
         ...state,
-        title: action.title,
-        first: action.first,
-        last: action.last
+        title: action.title || state.title,
+        first: action.first || state.first,
+        last: action.last || state.last
       };
 
     case C.EDIT_ASSISTANT_ADDRESS:
       return {
         ...state,
-        streetNumber: action.streetNumber,
-        streetName: action.streetName,
-        unitName: action.unitName,
-        city: action.city,
-        state: action.state,
-        postCode: action.postCode
+        streetNumber: action.streetNumber || state.streetNumber,
+        streetName: action.streetName || state.streetName,
+        unitName: action.unitName || state.unitName,
+        city: action.city || state.city,
+        state: action.state || state.state,
+        postCode: action.postCode || state.postCode
       };
 
     case C.EDIT_ASSISTANT_PHONE:
@@ -109,11 +109,11 @@ const assistantDetail = (state = {}, action) => {
       case C.EDIT_ASSISTANT:
       return {
         ...state,
-        startWorkDate: action.startWorkDate,
-        endWorkDate: action.endWorkDate,
-        dob: action.dob,
-        nationality: action.nationality,
-        genderType: action.genderType
+        startWorkDate: action.startWorkDate || state.startWorkDate,
+        endWorkDate: action.endWorkDate || state.endWorkDate,
+        dob: action.dob || state.dob,
+        nationality: action.nationality || state.nationality,
+        genderType: action.genderType || state.genderType
       };
       break;
 
