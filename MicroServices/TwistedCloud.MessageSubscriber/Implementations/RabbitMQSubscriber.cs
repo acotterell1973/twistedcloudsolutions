@@ -1,7 +1,6 @@
-﻿using System;
-using MessageSubscriber.Interfaces;
+﻿using MessageSubscriber.Interfaces;
 using RabbitMQ.Client;
-using MessageSubscriber.Models;
+using Shared.Kernel;
 
 namespace MessageSubscriber.Implementations
 {
@@ -10,21 +9,21 @@ namespace MessageSubscriber.Implementations
         private bool _subscribing;
         private static ConnectionFactory _factory;
         private static IConnection _connection;
+        private readonly IMessageProcessor _messageProcessor;
+        private readonly IConfiguration _configuration;
 
-        private const string Exchange = "OrderFanoutExchange";
-        private IMessageProcessor _messageProcessor;
-        private string _queueName;
 
         public bool Subscribing
         {
-            get { return _subscribing; }
-            set { _subscribing = value; }
+            get => _subscribing;
+            set => _subscribing = value;
         }
 
-        public RabbitMqSubscriber(IMessageProcessor messageProcessor)
+        public RabbitMqSubscriber(IConfiguration configuration, IMessageProcessor messageProcessor)
         {
             _subscribing = true;
             _messageProcessor = messageProcessor;
+            _configuration = configuration;
         }
 
         public void Subscribe()
@@ -37,39 +36,33 @@ namespace MessageSubscriber.Implementations
                 {
                     SetupChannel(channel);
 
-                    var consumer = new QueueingBasicConsumer(channel);
-                    channel.BasicConsume(_queueName, true, consumer);
-
+                    var consumer = new MessageReceiver(channel, _messageProcessor);
+                    channel.BasicConsume(queue: Constants.RabbitMQConfigurations.directQueueName, false, consumer: consumer);
                     Logger.LogInfo("Connected and listening...");
-                    while (_subscribing)
-                    {
-                        GetAMessageFromQueue(consumer, channel);
-                    }
+
+                    while (_subscribing) { }
                 }
-            }
-        }
-
-        private void GetAMessageFromQueue(QueueingBasicConsumer consumer, IModel channel)
-        {
-            var m = consumer.Queue.Dequeue();
-            var message = (Message)m.Body.DeSerializeFromByteArray(typeof(Message));
-
-            try
-            {
-                _messageProcessor.Process(message);
-                //channel.BasicAck(m.DeliveryTag, false);
-            } catch (Exception e)
-            {
-                Logger.LogError(e);
-                //channel.BasicNack(m.DeliveryTag, false, true);
             }
         }
 
         private void SetupChannel(IModel channel)
         {
-            channel.ExchangeDeclare(Exchange, "fanout");
-            _queueName = channel.QueueDeclare().QueueName;
-            channel.QueueBind(_queueName, Exchange, "");
+            channel.ExchangeDeclare(
+               exchange: Constants.RabbitMQConfigurations.directExchangeName,
+               type: "direct",
+               durable: true);
+
+            channel.QueueDeclare(
+                queue: Constants.RabbitMQConfigurations.directQueueName,
+                durable: false,
+                exclusive: false,
+                autoDelete: false);
+
+            channel.QueueBind(
+                Constants.RabbitMQConfigurations.directQueueName,
+                Constants.RabbitMQConfigurations.directExchangeName,
+                Constants.RabbitMQConfigurations.directRoutingKeyName
+                );
 
             channel.BasicQos(0, 1, false);
         }
@@ -77,7 +70,12 @@ namespace MessageSubscriber.Implementations
         private void ConnectToMessageBroker()
         {
             Logger.LogInfo("Connecting to Message Broker...");
-            _factory = new ConnectionFactory { HostName = "192.168.0.20", UserName = "test", Password = "test" };
+            _factory = new ConnectionFactory
+            {
+                HostName = _configuration.Host,
+                UserName = _configuration.Username,
+                Password = _configuration.Password
+            };
         }
 
         public void UnSubscribe()

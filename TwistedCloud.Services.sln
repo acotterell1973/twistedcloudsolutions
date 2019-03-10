@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2002
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28531.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Kernel", "MicroServices\Shared.Kernel\Shared.Kernel.csproj", "{D7E3126B-B44F-4ADA-85C1-C9D87AF94E9E}"
 EndProject
@@ -21,12 +21,36 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageSubscriber", "MicroS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.CommunityManagement.Microservice", "MicroServices\TwistedCloud.CommunityManagement.Microservice\TwistedCloud.CommunityManagement.Microservice.csproj", "{28DF37EA-55B4-4D37-8EC0-A472B6FC8120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Framework.DependencyInjection.Ninject", "MicroServices\Microsoft.Framework.DependencyInjection.Ninject\Microsoft.Framework.DependencyInjection.Ninject.csproj", "{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Framework.DependencyInjection.Ninject", "MicroServices\Microsoft.Framework.DependencyInjection.Ninject\Microsoft.Framework.DependencyInjection.Ninject.csproj", "{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{813708E6-A266-4355-8572-FFD6D7D63B0D}"
 	ProjectSection(SolutionItems) = preProject
 		Notes.txt = Notes.txt
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MediaServices", "MediaServices", "{8CF6EC0C-A43A-42BF-931B-10F6939C7877}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.Media.MicroService", "MicroServices\TwistedCloud.Media.MicroService\TwistedCloud.Media.MicroService.csproj", "{ECCEB657-FA36-405C-B9C9-DDB208714D8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueueProcessors", "QueueProcessors", "{8FC3CC02-2D02-4E35-A3D5-88757CC34F7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.MessagePublisher", "MicroServices\TwistedCloud.MessagePublisher\TwistedCloud.MessagePublisher.csproj", "{E7E5185D-8954-4650-A7C5-64F6CC5B430F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Business", "2.Business", "{AD73E405-3700-4783-A273-024058B5DD90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.ApplicationService", "1.ApplicationService", "{8D861D13-F967-45EE-B386-D7233BB579A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.MediaProcessor.Service", "MicroServices\TwistedCloud.MediaProcessor.Service\TwistedCloud.MediaProcessor.Service.csproj", "{3F196405-C315-45DC-88E6-1CBA0BF455CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.MessageSubscriber", "3.MessageSubscriber", "{4318AF6F-A9A3-46C3-8133-40C6160ADBF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.VideoProcessor.Component", "MicroServices\TwistedCloud.VideoProcessor.Component\TwistedCloud.VideoProcessor.Component.csproj", "{D5DE4324-CDDA-47DE-B839-27BB1A60A60D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwistedCloud.EmailProcessor.Component", "MicroServices\TwistedCloud.EmailProcessor.Component\TwistedCloud.EmailProcessor.Component.csproj", "{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CCE4D523-C2D2-4DE9-BB25-3ED4A2ED392B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientTest", "MicroServices\ApiClientTest\ApiClientTest.csproj", "{77353B16-2582-4B3A-B4BC-87AA35B77534}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +90,30 @@ Global
 		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F2AF7D-CC30-41DC-97E6-AB5AB48F781B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCEB657-FA36-405C-B9C9-DDB208714D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCEB657-FA36-405C-B9C9-DDB208714D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCEB657-FA36-405C-B9C9-DDB208714D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCEB657-FA36-405C-B9C9-DDB208714D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E5185D-8954-4650-A7C5-64F6CC5B430F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E5185D-8954-4650-A7C5-64F6CC5B430F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E5185D-8954-4650-A7C5-64F6CC5B430F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E5185D-8954-4650-A7C5-64F6CC5B430F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F196405-C315-45DC-88E6-1CBA0BF455CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F196405-C315-45DC-88E6-1CBA0BF455CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F196405-C315-45DC-88E6-1CBA0BF455CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F196405-C315-45DC-88E6-1CBA0BF455CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5DE4324-CDDA-47DE-B839-27BB1A60A60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5DE4324-CDDA-47DE-B839-27BB1A60A60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5DE4324-CDDA-47DE-B839-27BB1A60A60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5DE4324-CDDA-47DE-B839-27BB1A60A60D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77353B16-2582-4B3A-B4BC-87AA35B77534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77353B16-2582-4B3A-B4BC-87AA35B77534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77353B16-2582-4B3A-B4BC-87AA35B77534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77353B16-2582-4B3A-B4BC-87AA35B77534}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,7 +124,17 @@ Global
 		{A0F984EB-DB69-44C9-858B-EF959986FCE6} = {C3DC3372-6BDF-49D0-9B88-D95850A1CF1A}
 		{C3DC3372-6BDF-49D0-9B88-D95850A1CF1A} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
 		{8FAC7510-C023-4F27-802A-CC138E13A48F} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{786B85F9-A239-4E99-AEC8-C955C0FCE32F} = {4318AF6F-A9A3-46C3-8133-40C6160ADBF6}
 		{28DF37EA-55B4-4D37-8EC0-A472B6FC8120} = {00FCB7B5-BE5B-413A-A85A-08CB2B2299B3}
+		{ECCEB657-FA36-405C-B9C9-DDB208714D8A} = {8CF6EC0C-A43A-42BF-931B-10F6939C7877}
+		{E7E5185D-8954-4650-A7C5-64F6CC5B430F} = {CCE4D523-C2D2-4DE9-BB25-3ED4A2ED392B}
+		{AD73E405-3700-4783-A273-024058B5DD90} = {8FC3CC02-2D02-4E35-A3D5-88757CC34F7D}
+		{8D861D13-F967-45EE-B386-D7233BB579A3} = {8FC3CC02-2D02-4E35-A3D5-88757CC34F7D}
+		{3F196405-C315-45DC-88E6-1CBA0BF455CF} = {8D861D13-F967-45EE-B386-D7233BB579A3}
+		{4318AF6F-A9A3-46C3-8133-40C6160ADBF6} = {8FC3CC02-2D02-4E35-A3D5-88757CC34F7D}
+		{D5DE4324-CDDA-47DE-B839-27BB1A60A60D} = {AD73E405-3700-4783-A273-024058B5DD90}
+		{E6EEC803-CC4F-4D2B-9332-ABBD297E8AD0} = {AD73E405-3700-4783-A273-024058B5DD90}
+		{77353B16-2582-4B3A-B4BC-87AA35B77534} = {CCE4D523-C2D2-4DE9-BB25-3ED4A2ED392B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67EEEB34-48A8-4056-85EA-2A5190BCCF01}

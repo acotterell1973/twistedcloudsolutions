@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using TwistedCloud.CommunityManagement.Core.Enum;
 using TwistedCloud.CommunityManagement.Core.Interfaces;
 using TwistedCloud.CommunityManagement.Core.Model.PersonAggregate.PersonType;
-
 
 namespace TwistedCloud.CommunityManagement.Microservice.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class AssistantManagerController : ControllerBase
     {
@@ -21,19 +22,25 @@ namespace TwistedCloud.CommunityManagement.Microservice.Controllers
             _assistantRepository = assistantRepository;
         }
 
-        [HttpGet]
-        public IEnumerable<Assistant> Get()
-        {
-            var assistant = _assistantRepository.GetAllAssistants();
-            return assistant;
-        }
+        //[HttpGet]
+        //public IEnumerable<Assistant> Get()
+        //{
+        //    var assistant = _assistantRepository.GetAllAssistants();
+        //    return assistant;
+        //}
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+          
+            return new JsonResult(from c in User.Claims select new {c.Type, c.Value});
+        }
 
         [HttpGet("{id}")]
         [ProducesResponseType(404)]
         public async Task<Assistant> GetByIdAsync(string id)
         {
-            var assistant = _assistantRepository.GetAssistantById(id);
+            var assistant =  _assistantRepository.GetAssistantById(id);
             return assistant;
         }
 

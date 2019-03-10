@@ -74,7 +74,7 @@ class AssistantUserProfile extends Component {
         break;
     }
 
-   // this.forceUpdate();
+    this.forceUpdate();
 
     //console.log("Street: ", addressObj.street_address1);
     //console.log("City: ", addressObj.city);

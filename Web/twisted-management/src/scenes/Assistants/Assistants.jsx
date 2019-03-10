@@ -40,7 +40,7 @@ class Assistants extends React.Component {
     const { store } = this.context;
     var actionPath = "/assistant/" + ((id === null) ? "new" : "edit/" + id)
     store.dispatch(setNavigationPath(actionPath, true, null));
-    this.forceUpdate(); // in the future figure out what's wrong with the state to cause us to use forceUpdate
+     this.forceUpdate(); // in the future figure out what's wrong with the state to cause us to use forceUpdate
   }
 
   render() {

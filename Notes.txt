@@ -3,3 +3,16 @@ https://stackoverflow.com/questions/31695194/translating-ninject-to-asp-net-mvc-
 
 MongoDb async
 https://stackoverflow.com/questions/30988107/async-await-usage-for-mongodb-repository
+
+RabbitMQ - follow this configuration to deal with the connection exception
+https://stackoverflow.com/questions/37218803/architecture-for-rabbitmq-in-tandem-with-angularjs-net-web-api-application - Architecture
+https://github.com/gertjvr/masstransit-docker
+https://hub.docker.com/r/micdenny/rabbitmq-windows/ - Docker for Windows
+
+https://passwordsgenerator.net/
+
+usr : pwd
+RabbitMQ: service_user : 5tCwPf6D9bemGkXK
+
+user secrets configuration
+https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-2.2&tabs=windows

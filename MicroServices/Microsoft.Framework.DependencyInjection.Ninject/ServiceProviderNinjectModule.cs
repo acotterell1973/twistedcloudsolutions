@@ -11,7 +11,7 @@ using Ninject.Syntax;
 
 namespace Microsoft.Framework.DependencyInjection.Ninject
 {
-    internal class ServiceProviderNinjectModule : NinjectModule
+    public class ServiceProviderNinjectModule : NinjectModule
     {
         private readonly IEnumerable<ServiceDescriptor> _serviceDescriptors;
 
